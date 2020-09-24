@@ -8,4 +8,4 @@ class Gear(models.Model):
     length_mm = models.IntegerField(blank=True)
     width_mm = models.IntegerField(blank=True)
     depth_mm = models.IntegerField(blank=True)
-    locking = models.BooleanField()
+    locking = models.BooleanField(default=False)
