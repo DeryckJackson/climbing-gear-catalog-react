@@ -4,7 +4,7 @@
   "description": "React App for organizing and keeping track of users climbing gear.",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development ./gearcatalog/frontend/src/index.js --output ./gearcatalog/frontend/static/frontend/main.js",
+    "dev": "webpack --mode development --watch ./gearcatalog/frontend/src/index.js --output ./gearcatalog/frontend/static/frontend/main.js",
     "build": "webpack --mode production ./gearcatalog/frontend/src/index.js --output ./gearcatalog/frontend/static/frontend/main.js"
   },
   "keywords": [],
