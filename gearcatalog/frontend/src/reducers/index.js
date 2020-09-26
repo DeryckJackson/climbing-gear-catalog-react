@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import gear from "./gear";
+import gearList from "./gear-list-reducer";
 
 export default combineReducers({
-  gear,
+  gearList,
 });
