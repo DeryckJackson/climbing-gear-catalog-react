@@ -5,8 +5,12 @@ import { getGear } from "../../actions/gear-list";
 
 export class GearList extends Component {
   static propTypes = {
-    gear: PropTypes.array.isRequired,
+    gearList: PropTypes.array.isRequired,
   };
+
+  componentDidMount() {
+    this.props.getGear();
+  }
 
   render() {
     return (
@@ -21,4 +25,4 @@ const mapStateToProps = (state) => ({
   gearList: state.gearList.gearList,
 });
 
-export default connect(mapStateToProps)(GearList);
+export default connect(mapStateToProps, { getGear })(GearList);

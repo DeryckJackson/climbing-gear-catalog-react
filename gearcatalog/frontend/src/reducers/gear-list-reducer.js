@@ -9,7 +9,7 @@ export default function (state = initialState, action) {
     case c.GET_GEAR:
       return {
         ...state,
-        gear: action.payload,
+        gearList: action.payload,
       };
     default:
       return state;
