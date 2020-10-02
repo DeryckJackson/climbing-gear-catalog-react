@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
-import gearList from "./gear-list-reducer";
+import gearListReducer from "./gear-list-reducer";
 
-export default combineReducers({
-  gearList,
+const rootReducer = combineReducers({
+  gearList: gearListReducer,
 });
+
+export default rootReducer;

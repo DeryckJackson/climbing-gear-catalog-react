@@ -11,6 +11,16 @@ export default function (state = initialState, action) {
         ...state,
         gearList: action.payload,
       };
+    case c.DELETE_GEAR:
+      return {
+        ...state,
+        gearList: state.gearList.filter((gear) => gear.id !== action.payload),
+      };
+    case c.ADD_GEAR:
+      return {
+        ...state,
+        gearList: [...state.gearList, action.payload],
+      };
     default:
       return state;
   }
