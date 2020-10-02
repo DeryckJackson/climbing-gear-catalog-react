@@ -40,7 +40,7 @@ export class GearList extends Component {
                 <td>{gear.length_mm}</td>
                 <td>{gear.width_mm}</td>
                 <td>{gear.depth_mm}</td>
-                <td>{gear.locking}</td>
+                <td>{gear.locking ? "Yes" : "No"}</td>
                 <td>
                   <button
                     onClick={this.props.deleteGear.bind(this, gear.id)}
