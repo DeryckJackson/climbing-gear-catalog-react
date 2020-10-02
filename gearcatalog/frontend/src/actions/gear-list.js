@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createMessage } from "./messages";
+import { createMessage, returnErrors } from "./messages";
 
 import * as c from "./types";
 
@@ -13,16 +13,9 @@ export const getGear = () => (dispatch) => {
         payload: res.data,
       });
     })
-    .catch((err) => {
-      const errors = {
-        msg: err.response.data,
-        status: err.response.status,
-      };
-      dispatch({
-        type: c.GET_ERRORS,
-        payload: errors,
-      });
-    });
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 // DELETE GEAR action
@@ -36,16 +29,9 @@ export const deleteGear = (id) => (dispatch) => {
         payload: id,
       });
     })
-    .catch((err) => {
-      const errors = {
-        msg: err.response.data,
-        status: err.response.status,
-      };
-      dispatch({
-        type: c.GET_ERRORS,
-        payload: errors,
-      });
-    });
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 // ADD GEAR action
@@ -59,14 +45,7 @@ export const addGear = (gear) => (dispatch) => {
         payload: res.data,
       });
     })
-    .catch((err) => {
-      const errors = {
-        msg: err.response.data,
-        status: err.response.status,
-      };
-      dispatch({
-        type: c.GET_ERRORS,
-        payload: errors,
-      });
-    });
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
