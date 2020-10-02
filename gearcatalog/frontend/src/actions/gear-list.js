@@ -12,7 +12,16 @@ export const getGear = () => (dispatch) => {
         payload: res.data,
       });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      const errors = {
+        msg: err.response.data,
+        status: err.response.status,
+      };
+      dispatch({
+        type: c.GET_ERRORS,
+        payload: errors,
+      });
+    });
 };
 
 // DELETE GEAR action
@@ -25,7 +34,16 @@ export const deleteGear = (id) => (dispatch) => {
         payload: id,
       });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      const errors = {
+        msg: err.response.data,
+        status: err.response.status,
+      };
+      dispatch({
+        type: c.GET_ERRORS,
+        payload: errors,
+      });
+    });
 };
 
 // ADD GEAR action
@@ -38,5 +56,14 @@ export const addGear = (gear) => (dispatch) => {
         payload: res.data,
       });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      const errors = {
+        msg: err.response.data,
+        status: err.response.status,
+      };
+      dispatch({
+        type: c.GET_ERRORS,
+        payload: errors,
+      });
+    });
 };
