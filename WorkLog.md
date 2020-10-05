@@ -8,3 +8,7 @@
 10/2/2020
 
 - 8am - 5pm: coding
+
+10/5/2020
+
+- 8am - 5pm: coding
