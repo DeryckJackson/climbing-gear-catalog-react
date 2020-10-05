@@ -62,9 +62,9 @@ export class Header extends Component {
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarColor01">
-            {isAuthenticated ? authLinks : guestLinks}
-            {/* <form class="form-inline my-2 my-lg-0">
+          {isAuthenticated ? authLinks : guestLinks}
+          {/* <div class="collapse navbar-collapse" id="navbarColor01">
+            <form class="form-inline my-2 my-lg-0">
               <input
                 class="form-control mr-sm-2"
                 type="text"
@@ -73,8 +73,8 @@ export class Header extends Component {
               <button class="btn btn-secondary my-2 my-sm-0" type="submit">
                 Search
               </button>
-            </form> */}
-          </div>
+            </form>
+          </div> */}
         </div>
       </nav>
     );

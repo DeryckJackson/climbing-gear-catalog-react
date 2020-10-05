@@ -1,12 +1,13 @@
 import axios from "axios";
 import { createMessage, returnErrors } from "./messages";
+import { tokenConfig } from "./auth";
 
 import * as c from "./types";
 
 // GET GEAR action
-export const getGear = () => (dispatch) => {
+export const getGear = () => (dispatch, getState) => {
   axios
-    .get("/api/gear/")
+    .get("/api/gear/", tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: c.GET_GEAR,
@@ -19,9 +20,9 @@ export const getGear = () => (dispatch) => {
 };
 
 // DELETE GEAR action
-export const deleteGear = (id) => (dispatch) => {
+export const deleteGear = (id) => (dispatch, getState) => {
   axios
-    .delete(`/api/gear/${id}/`)
+    .delete(`/api/gear/${id}/`, tokenConfig(getState))
     .then(() => {
       dispatch(createMessage({ gearDeleted: "Gear Deleted" }));
       dispatch({
@@ -35,9 +36,9 @@ export const deleteGear = (id) => (dispatch) => {
 };
 
 // ADD GEAR action
-export const addGear = (gear) => (dispatch) => {
+export const addGear = (gear) => (dispatch, getState) => {
   axios
-    .post(`/api/gear/`, gear)
+    .post(`/api/gear/`, gear, tokenConfig(getState))
     .then((res) => {
       dispatch(createMessage({ gearAdded: "Gear Added" }));
       dispatch({
