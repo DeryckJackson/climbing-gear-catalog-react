@@ -50,3 +50,18 @@ export const addGear = (gear) => (dispatch, getState) => {
       dispatch(returnErrors(err.response.data, err.response.status))
     );
 };
+
+// SELECT GEAR action
+export const selectGear = (id) => (dispatch, getState) => {
+  axios
+    .get(`/api/gear/${id}/`, tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: c.SELECT_GEAR,
+        payload: res.data,
+      });
+    })
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
+};

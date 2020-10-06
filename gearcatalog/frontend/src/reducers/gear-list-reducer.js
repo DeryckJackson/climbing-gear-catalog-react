@@ -2,6 +2,7 @@ import * as c from "../actions/types.js";
 
 const initialState = {
   gearList: [],
+  selectedGear: {},
 };
 
 export default function (state = initialState, action) {
@@ -20,6 +21,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         gearList: [...state.gearList, action.payload],
+      };
+    case c.SELECT_GEAR:
+      return {
+        ...state,
+        selectedGear: action.payload,
       };
     default:
       return state;
