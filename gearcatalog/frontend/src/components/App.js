@@ -5,6 +5,7 @@ import {
   Route,
   Switch,
   Redirect,
+  Link,
 } from "react-router-dom";
 
 import Header from "./layout/Header";
@@ -13,6 +14,7 @@ import Alerts from "./layout/Alerts";
 import Login from "./accounts/Login";
 import Register from "./accounts/Register";
 import PrivateRoute from "./common/PrivateRoute";
+import Form from "./gear/Form";
 
 import { Provider } from "react-redux";
 import store from "../store";
@@ -44,6 +46,7 @@ class App extends Component {
               <div className="container">
                 <Switch>
                   <PrivateRoute exact path="/" component={Dashboard} />
+                  <PrivateRoute exact path="/addgear" component={Form} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
                 </Switch>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addGear } from "../../actions/gear-list";
+import { Link } from "react-router-dom";
 
 export class Form extends Component {
   state = {
@@ -68,7 +69,7 @@ export class Form extends Component {
       locking,
     } = this.state;
     return (
-      <div className="card card-body mt-4 mb-4">
+      <div className="card card-body mt-4 mb-4 pb-1">
         <h2>Add Gear</h2>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
@@ -161,9 +162,13 @@ export class Form extends Component {
             </select>
           </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-primary mb-4">
               Submit
             </button>
+            <br />
+            <Link to="/" className="btn btn-primary">
+              Home
+            </Link>
           </div>
         </form>
       </div>

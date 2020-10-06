@@ -45,13 +45,13 @@ export class Header extends Component {
     );
 
     return (
-      <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+      <nav className="navbar navbar-expand-sm navbar-dark bg-primary">
         <div className="container">
-          <a class="navbar-brand" href="#">
+          <a className="navbar-brand" href="#">
             Gear Catalog
           </a>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#navbarColor01"

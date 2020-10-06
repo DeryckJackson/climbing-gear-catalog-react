@@ -17,42 +17,25 @@ export class GearList extends Component {
   render() {
     return (
       <Fragment>
-        <h2>Gear List</h2>
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Brand</th>
-              <th>Weight Grams</th>
-              <th>Length MM</th>
-              <th>Width MM</th>
-              <th>Depth MM</th>
-              <th>Locking</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.gearList.map((gear) => (
-              <tr key={gear.id}>
-                <td>{gear.name}</td>
-                <td>{gear.brand}</td>
-                <td>{gear.weight_grams}</td>
-                <td>{gear.length_mm}</td>
-                <td>{gear.width_mm}</td>
-                <td>{gear.depth_mm}</td>
-                <td>{gear.locking ? "Yes" : "No"}</td>
-                <td>
-                  <button
-                    onClick={this.props.deleteGear.bind(this, gear.id)}
-                    className="btn-danger btn btn-sm"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <h2 className="mt-4">Gear List</h2>
+        {this.props.gearList.map((gear) => (
+          <div
+            className="card d-inline-flex m-2 rounded shadow"
+            key={gear.id}
+            style={{ width: "15rem" }}
+          >
+            <div className="card-body">
+              <h5 className="card-title">{gear.name}</h5>
+              <p className="card-text">Brand: {gear.brand} </p>
+              <button
+                onClick={this.props.deleteGear.bind(this, gear.id)}
+                className="btn-danger btn btn-sm"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
       </Fragment>
     );
   }

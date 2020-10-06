@@ -1,12 +1,15 @@
 import React, { Fragment } from "react";
-import Form from "./Form";
 import GearList from "./GearList";
+import { Link } from "react-router-dom";
 
 export default function Dashboard() {
   return (
     <Fragment>
       <GearList />
-      <Form />
+      <br />
+      <Link to="/addgear" className="btn btn-primary mt-4 shadow">
+        Add Gear
+      </Link>
     </Fragment>
   );
 }
