@@ -16,6 +16,7 @@ import Register from "./accounts/Register";
 import PrivateRoute from "./common/PrivateRoute";
 import Form from "./gear/Form";
 import GearDetail from "./gear/GearDetail";
+import EditGearForm from "./gear/EditGearForm";
 
 import { Provider } from "react-redux";
 import store from "../store";
@@ -49,6 +50,7 @@ class App extends Component {
                   <PrivateRoute exact path="/" component={Dashboard} />
                   <PrivateRoute exact path="/addgear" component={Form} />
                   <PrivateRoute path="/gear/:id" component={GearDetail} />
+                  <PrivateRoute path="/editgear/:id" component={EditGearForm} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
                 </Switch>

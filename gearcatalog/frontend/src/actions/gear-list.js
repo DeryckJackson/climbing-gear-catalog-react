@@ -65,3 +65,19 @@ export const selectGear = (id) => (dispatch, getState) => {
       dispatch(returnErrors(err.response.data, err.response.status))
     );
 };
+
+// EDIT GEAR action
+export const editGear = (gear) => (dispatch, getState) => {
+  axios
+    .put(`/api/gear/${gear.id}/`, gear, tokenConfig(getState))
+    .then((res) => {
+      dispatch(createMessage({ gearUpdated: "Gear Updated" }));
+      dispatch({
+        type: c.EDIT_GEAR,
+        payload: res.data,
+      });
+    })
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
+};

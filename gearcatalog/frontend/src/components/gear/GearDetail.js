@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { selectGear, deleteGear } from "../../actions/gear-list";
+import { selectGear } from "../../actions/gear-list";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link, withRouter } from "react-router-dom";
@@ -77,4 +77,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { selectGear, deleteGear })(GearDetail);
+export default connect(mapStateToProps, { selectGear })(GearDetail);

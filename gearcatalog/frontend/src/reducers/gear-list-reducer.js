@@ -17,6 +17,7 @@ export default function (state = initialState, action) {
         ...state,
         gearList: state.gearList.filter((gear) => gear.id !== action.payload),
       };
+    case c.EDIT_GEAR:
     case c.ADD_GEAR:
       return {
         ...state,

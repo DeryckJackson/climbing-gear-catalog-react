@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getGear, deleteGear } from "../../actions/gear-list";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 export class GearList extends Component {
   static propTypes = {
