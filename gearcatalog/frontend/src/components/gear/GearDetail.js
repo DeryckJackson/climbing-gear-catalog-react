@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
-import { selectGear } from "../../actions/gear-list";
+import { selectGear, deleteGear } from "../../actions/gear-list";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Link, withRouter } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 export class GearDetail extends Component {
   static propTypes = {
@@ -28,6 +28,10 @@ export class GearDetail extends Component {
       depth_mm,
       locking,
     } = this.props.selectedGear;
+
+    if (this.props.redirect) {
+      return <Redirect to={this.props.redirect} />;
+    }
 
     return (
       <Fragment>
@@ -61,6 +65,12 @@ export class GearDetail extends Component {
             <Link to={"/editgear/" + id} className="btn btn-info rounded">
               Edit
             </Link>
+            <button
+              onClick={this.props.deleteGear.bind(this, id)}
+              className="btn-danger btn btn-sm float-right rounded"
+            >
+              Delete
+            </button>
           </div>
         </div>
         <Link to="/" className="btn btn-primary mt-2 shadow rounded">
@@ -74,7 +84,8 @@ export class GearDetail extends Component {
 const mapStateToProps = (state) => {
   return {
     selectedGear: state.gearList.selectedGear,
+    redirect: state.redirect.redirect,
   };
 };
 
-export default connect(mapStateToProps, { selectGear })(GearDetail);
+export default connect(mapStateToProps, { selectGear, deleteGear })(GearDetail);
