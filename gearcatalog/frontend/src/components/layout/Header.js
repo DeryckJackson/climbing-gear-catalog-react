@@ -15,7 +15,7 @@ export class Header extends Component {
 
     const authLinks = (
       <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
-        <span className="navbar-text mr-3">
+        <span className="navbar-text text-light mr-3">
           <strong>{user ? `Welcome ${user.username}` : ""}</strong>
         </span>
         <li className="nav-item">
@@ -47,7 +47,7 @@ export class Header extends Component {
     return (
       <nav className="navbar navbar-expand-sm navbar-dark bg-primary">
         <div className="container">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="/">
             Gear Catalog
           </a>
           <button

@@ -7,16 +7,20 @@ import {
   Redirect,
   Link,
 } from "react-router-dom";
+import "./App.css";
 
 import Header from "./layout/Header";
-import Dashboard from "./gear/Dashboard";
 import Alerts from "./layout/Alerts";
+
 import Login from "./accounts/Login";
 import Register from "./accounts/Register";
+
 import PrivateRoute from "./common/PrivateRoute";
+
 import Form from "./gear/Form";
 import GearDetail from "./gear/GearDetail";
 import EditGearForm from "./gear/EditGearForm";
+import Dashboard from "./gear/Dashboard";
 
 import { Provider } from "react-redux";
 import store from "../store";
