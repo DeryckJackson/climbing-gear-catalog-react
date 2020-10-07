@@ -3,6 +3,7 @@ import { selectGear, deleteGear } from "../../actions/gear-list";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link, Redirect } from "react-router-dom";
+import LinkButton from "../layout/LinkButton";
 
 export class GearDetail extends Component {
   static propTypes = {
@@ -35,47 +36,51 @@ export class GearDetail extends Component {
 
     return (
       <Fragment>
-        <h2 className="my-4">Gear Detail</h2>
-        <div
-          className="card border-primary rounded shadow mb-3"
-          style={{ width: "30rem" }}
-          key={id}
-        >
-          <div className="card-header">
-            <strong>{name}</strong>
+        <div className="card card-body justify-content-center rounded shadow mt-2">
+          <h2 className="my-2">Gear Detail</h2>
+          <div
+            className="card border-primary rounded shadow mb-3"
+            style={{ width: "30rem" }}
+            key={id}
+          >
+            <div className="card-header">
+              <strong>{name}</strong>
+            </div>
+            <div className="card-body">
+              <p className="card-text">
+                Description: <br />
+                {desc}
+              </p>
+              <hr />
+              <p className="card-text">Brand: {brand}</p>
+              <hr />
+              <p className="card-text">Weight: {weight_grams} g</p>
+              <hr />
+              <p className="card-text">Length: {length_mm} mm</p>
+              <hr />
+              <p className="card-text">Width: {width_mm} mm</p>
+              <hr />
+              <p className="card-text">Depth: {depth_mm} mm</p>
+              <hr />
+              <p className="card-text">Locking: {locking ? "Yes" : "No"}</p>
+              <hr />
+              <Link to={"/editgear/" + id} className="btn btn-info rounded">
+                Edit
+              </Link>
+              <button
+                onClick={this.props.deleteGear.bind(this, id)}
+                className="btn-danger btn float-right rounded"
+              >
+                Delete
+              </button>
+            </div>
           </div>
-          <div className="card-body">
-            <p className="card-text">
-              Description: <br />
-              {desc}
-            </p>
-            <hr />
-            <p className="card-text">Brand: {brand}</p>
-            <hr />
-            <p className="card-text">Weight: {weight_grams} g</p>
-            <hr />
-            <p className="card-text">Length: {length_mm} mm</p>
-            <hr />
-            <p className="card-text">Width: {width_mm} mm</p>
-            <hr />
-            <p className="card-text">Depth: {depth_mm} mm</p>
-            <hr />
-            <p className="card-text">Locking: {locking ? "Yes" : "No"}</p>
-            <hr />
-            <Link to={"/editgear/" + id} className="btn btn-info rounded">
-              Edit
-            </Link>
-            <button
-              onClick={this.props.deleteGear.bind(this, id)}
-              className="btn-danger btn float-right rounded"
-            >
-              Delete
-            </button>
+          <div>
+            <LinkButton to="/" className="btn btn-primary rounded">
+              Home
+            </LinkButton>
           </div>
         </div>
-        <Link to="/" className="btn btn-primary mt-2 shadow rounded">
-          Home
-        </Link>
       </Fragment>
     );
   }

@@ -4,6 +4,7 @@ import { redirect as redirectLink } from "../../actions/redirect";
 import PropTypes from "prop-types";
 import { getGear, deleteGear } from "../../actions/gear-list";
 import { Link, withRouter } from "react-router-dom";
+import LinkButton from "../layout/LinkButton";
 
 export class GearList extends Component {
   static propTypes = {
@@ -21,7 +22,7 @@ export class GearList extends Component {
     if (this.props.gearList.length == 0) {
       return (
         <Fragment>
-          <div className="card card-body justify-content-center rounded shadow mt-4">
+          <div className="card card-body justify-content-center rounded shadow mt-2">
             <h2 className="mt-1">Gear List</h2>
             <p>No gear yet.</p>
             <Link to="/addgear">
@@ -35,7 +36,7 @@ export class GearList extends Component {
     }
     return (
       <Fragment>
-        <div className="card card-body justify-content-center rounded shadow mt-4">
+        <div className="card card-body justify-content-center rounded shadow mt-2">
           <h2 className="mt-1">Gear List</h2>
           {this.props.gearList.map((gear) => (
             <div
@@ -65,11 +66,11 @@ export class GearList extends Component {
             </div>
           ))}
           <br />
-          <Link to="/addgear">
-            <button className="btn btn-primary mt-4 shadow rounded">
+          <div>
+            <LinkButton to="/addgear" className="btn btn-primary rounded">
               Add Gear
-            </button>
-          </Link>
+            </LinkButton>
+          </div>
         </div>
       </Fragment>
     );

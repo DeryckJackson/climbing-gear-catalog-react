@@ -83,7 +83,7 @@ export class Form extends Component {
     }
 
     return (
-      <div className="card card-body shadow mt-4 mb-4 pb-1">
+      <div className="card card-body shadow mt-2 mb-2 pb-1">
         <h2>Edit Gear</h2>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">

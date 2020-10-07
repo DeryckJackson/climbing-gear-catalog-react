@@ -1,27 +1,21 @@
 import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
-import {
-  HashRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-  Link,
-} from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 
 import Header from "./layout/Header";
-import Alerts from "./layout/Alerts";
 import Footer from "./layout/Footer";
+import Alerts from "./layout/Alerts";
 
 import Login from "./accounts/Login";
 import Register from "./accounts/Register";
 
 import PrivateRoute from "./common/PrivateRoute";
 
-import Form from "./gear/Form";
-import GearDetail from "./gear/GearDetail";
-import EditGearForm from "./gear/EditGearForm";
 import Dashboard from "./gear/Dashboard";
+import Form from "./gear/Form";
+import EditGearForm from "./gear/EditGearForm";
+import GearDetail from "./gear/GearDetail";
 
 import { Provider } from "react-redux";
 import store from "../store";

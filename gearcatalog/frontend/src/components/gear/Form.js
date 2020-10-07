@@ -69,7 +69,7 @@ export class Form extends Component {
       locking,
     } = this.state;
     return (
-      <div className="card card-body mt-4 mb-4 pb-1 shadow">
+      <div className="card card-body mt-2 mb-2 pb-1 shadow">
         <h2>Add Gear</h2>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
