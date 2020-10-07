@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { editGear, selectGear } from "../../actions/gear-list";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 export class Form extends Component {
   state = {
@@ -77,6 +77,11 @@ export class Form extends Component {
       width_mm,
       locking,
     } = this.state;
+
+    if (this.props.redirect) {
+      return <Redirect to={this.props.redirect} />;
+    }
+
     return (
       <div className="card card-body mt-4 mb-4 pb-1">
         <h2>Edit Gear</h2>
@@ -171,11 +176,11 @@ export class Form extends Component {
             </select>
           </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-primary mb-4">
+            <button type="submit" className="btn btn-primary mb-4 rounded">
               Submit
             </button>
             <br />
-            <Link to="/" className="btn btn-primary">
+            <Link to="/" className="btn btn-primary rounded">
               Home
             </Link>
           </div>
@@ -188,6 +193,7 @@ export class Form extends Component {
 const mapStateToProps = (state) => {
   return {
     selectedGear: state.gearList.selectedGear,
+    redirect: state.redirect.redirect,
   };
 };
 

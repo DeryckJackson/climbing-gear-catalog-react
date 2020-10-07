@@ -78,6 +78,7 @@ export const editGear = (gear) => (dispatch, getState) => {
         type: c.EDIT_GEAR,
         payload: res.data,
       });
+      dispatch(redirect("/"));
     })
     .catch((err) =>
       dispatch(returnErrors(err.response.data, err.response.status))

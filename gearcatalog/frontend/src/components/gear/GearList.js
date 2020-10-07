@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { redirect as updateRoute } from "../../actions/redirect";
+import { redirect as redirectLink } from "../../actions/redirect";
 import PropTypes from "prop-types";
 import { getGear, deleteGear } from "../../actions/gear-list";
 import { Link, withRouter } from "react-router-dom";
@@ -14,7 +14,7 @@ export class GearList extends Component {
 
   componentDidMount() {
     this.props.getGear();
-    this.props.updateRoute(null);
+    this.props.redirectLink(null);
   }
 
   render() {
@@ -60,6 +60,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getGear, deleteGear, updateRoute })(
+export default connect(mapStateToProps, { getGear, deleteGear, redirectLink })(
   GearList
 );

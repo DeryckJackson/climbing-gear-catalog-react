@@ -67,7 +67,7 @@ export class GearDetail extends Component {
             </Link>
             <button
               onClick={this.props.deleteGear.bind(this, id)}
-              className="btn-danger btn btn-sm float-right rounded"
+              className="btn-danger btn float-right rounded"
             >
               Delete
             </button>
