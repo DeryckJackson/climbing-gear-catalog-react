@@ -162,7 +162,7 @@ export class Form extends Component {
             </select>
           </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-primary mb-4 rounded">
+            <button type="submit" className="btn btn-success mb-4 rounded">
               Submit
             </button>
             <br />

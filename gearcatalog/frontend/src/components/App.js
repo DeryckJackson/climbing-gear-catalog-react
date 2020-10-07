@@ -11,6 +11,7 @@ import "./App.css";
 
 import Header from "./layout/Header";
 import Alerts from "./layout/Alerts";
+import Footer from "./layout/Footer";
 
 import Login from "./accounts/Login";
 import Register from "./accounts/Register";
@@ -59,6 +60,7 @@ class App extends Component {
                   <Route exact path="/login" component={Login} />
                 </Switch>
               </div>
+              <Footer />
             </Fragment>
           </Router>
         </AlertProvider>

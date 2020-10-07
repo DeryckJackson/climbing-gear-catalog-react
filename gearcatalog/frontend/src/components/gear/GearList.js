@@ -65,8 +65,10 @@ export class GearList extends Component {
             </div>
           ))}
           <br />
-          <Link to="/addgear" className="btn btn-primary mt-4 shadow rounded">
-            Add Gear
+          <Link to="/addgear">
+            <button className="btn btn-primary mt-4 shadow rounded">
+              Add Gear
+            </button>
           </Link>
         </div>
       </Fragment>

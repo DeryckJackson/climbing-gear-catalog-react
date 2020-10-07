@@ -37,7 +37,7 @@ export class GearDetail extends Component {
       <Fragment>
         <h2 className="my-4">Gear Detail</h2>
         <div
-          className="card border-primary shadow mb-3"
+          className="card border-primary rounded shadow mb-3"
           style={{ width: "30rem" }}
           key={id}
         >

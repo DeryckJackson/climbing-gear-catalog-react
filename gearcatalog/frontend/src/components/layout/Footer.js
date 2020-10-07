@@ -1,20 +1,9 @@
 import React from "react";
 
 const Footer = () => (
-  <div
-    className="footer"
-    style={{
-      marginTop: "1rem",
-      padding: "1rem",
-      backgroundColor: "rgb(235, 195, 64)",
-      position: "fixed",
-      bottom: "0",
-      left: "0",
-      width: "100%",
-    }}
-  >
-    <p>This is some content in sticky footer</p>
-  </div>
+  <footer className="page-footer bg-primary fixed-bottom">
+    <div className="container text-white p-2">Copyright © 2020</div>
+  </footer>
 );
 
 export default Footer;

@@ -83,7 +83,7 @@ export class Form extends Component {
     }
 
     return (
-      <div className="card card-body mt-4 mb-4 pb-1">
+      <div className="card card-body shadow mt-4 mb-4 pb-1">
         <h2>Edit Gear</h2>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
@@ -176,12 +176,12 @@ export class Form extends Component {
             </select>
           </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-primary mb-4 rounded">
+            <button type="submit" className="btn btn-success mb-4 rounded">
               Submit
             </button>
             <br />
-            <Link to="/" className="btn btn-primary rounded">
-              Home
+            <Link to="/">
+              <button className="btn btn-primary rounded">Home</button>
             </Link>
           </div>
         </form>
