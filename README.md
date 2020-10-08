@@ -20,7 +20,6 @@ React App for organizing and keeping track of users climbing gear.
 - As a user I want to collaborate with other users to put racks together for climbing trips, it should be able to make a list from both users collection.
 - As a user I want new gear suggestions based on what kind of gear I have, e.g. You're missing cams in size 0.3 - 0.75 [link]. Your rope is over 5 years old, manufacturers recommend replacing them every 5 years. [link].
 - As a user I want to be able to make my wishlist public so other people can see the gear I want and get it for me
--
 
 ## Setup and Installation
 

@@ -36,40 +36,45 @@ export class GearList extends Component {
     }
     return (
       <Fragment>
-        <div className="card card-body justify-content-center rounded shadow mt-2">
-          <h2 className="mt-1">Gear List</h2>
-          {this.props.gearList.map((gear) => (
-            <div
-              className="card border-primary d-inline-flex m-2 rounded shadow"
-              key={gear.id}
-              style={{ width: "15rem" }}
-            >
-              <div className="card-header">
-                <strong>{gear.name}</strong>
+        <div className="card rounded shadow mt-2">
+          <div className="card-body">
+            <h2 className="mt-1">Gear List</h2>
+            {this.props.gearList.map((gear) => (
+              <div
+                className="card border-primary d-inline-flex m-2 rounded shadow"
+                key={gear.id}
+                style={{ width: "15rem" }}
+              >
+                <div className="card-header">
+                  <strong>{gear.name}</strong>
+                </div>
+                <div className="card-body">
+                  <p className="card-text">Brand: {gear.brand} </p>
+                  <hr />
+                  <Link
+                    to={"gear/" + gear.id}
+                    className="btn-primary btn-sm btn mr-1 rounded"
+                  >
+                    View
+                  </Link>
+                  <button
+                    onClick={this.props.deleteGear.bind(this, gear.id)}
+                    className="btn-danger btn btn-sm float-right rounded"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
-              <div className="card-body">
-                <p className="card-text">Brand: {gear.brand} </p>
-                <hr />
-                <Link
-                  to={"gear/" + gear.id}
-                  className="btn-primary btn-sm btn mr-1 rounded"
-                >
-                  View
-                </Link>
-                <button
-                  onClick={this.props.deleteGear.bind(this, gear.id)}
-                  className="btn-danger btn btn-sm float-right rounded"
-                >
-                  Delete
-                </button>
-              </div>
+            ))}
+            <br />
+            <div>
+              <LinkButton
+                to="/addgear"
+                className="btn btn-primary rounded mt-4"
+              >
+                Add Gear
+              </LinkButton>
             </div>
-          ))}
-          <br />
-          <div>
-            <LinkButton to="/addgear" className="btn btn-primary rounded">
-              Add Gear
-            </LinkButton>
           </div>
         </div>
       </Fragment>
