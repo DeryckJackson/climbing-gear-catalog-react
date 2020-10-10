@@ -19,11 +19,11 @@ class GearTest(TestCase):
         gear_nut = Gear.objects.get(name='Nut')
         self.assertEquals(
             gear_cam,
-            Gear(id=0, name='Cam', desc='A cam', brand='OnlyCams', weight_grams='1',
+            Gear(id=1, name='Cam', desc='A cam', brand='OnlyCams', weight_grams='1',
                  length_mm='1', width_mm='1', depth_mm='1', locking=False, owner=None)
         )
         self.assertEquals(
             gear_nut,
-            Gear(id=0, name='Nut', desc='A Nut', brand='OnlyNuts', weight_grams='1',
+            Gear(id=2, name='Nut', desc='A Nut', brand='OnlyNuts', weight_grams='1',
                  length_mm='1', width_mm='1', depth_mm='1', locking=False, owner=None)
         )
