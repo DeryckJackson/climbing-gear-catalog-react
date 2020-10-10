@@ -8,6 +8,8 @@ React App for organizing and keeping track of users climbing gear.
 
 ## Component Diagram
 
+![diagram](component-diagram.png)
+
 ## User Stories
 
 - :heavy_check_mark: As a user I want to add a gear piece to my gear collection with name, description, brand, weight, width, depth and whether or not it locks.
@@ -43,11 +45,25 @@ npm install
 npm run dev
 ```
 
+- Open new terminal
 - Run the python migration
 
 ```
 cd gearcatalog
 python manage.py migrate
+```
+
+- Add a .env file to the `gearcatalog` directory.
+- Generate a new django secret key by running the follow command
+
+```
+python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+```
+
+- Add the generated key to the .env file with the following key
+
+```
+SECRET_KEY = {YOUR_NEW_SECRET_KEY}
 ```
 
 - Run the python backend server
