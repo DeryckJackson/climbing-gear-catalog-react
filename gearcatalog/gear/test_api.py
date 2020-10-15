@@ -42,3 +42,7 @@ class GearTest(APITestCase):
         # get request for invalid gear piece
         request = self.client.get(reverse('gear-detail', args=[69420]))
         self.assertEqual(request.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_delete_gear_piece(self):
+        request = self.client.delete(reverse('gear-detail', args=[1]))
+        self.assertEqual(request.status_code, status.HTTP_204_NO_CONTENT)
