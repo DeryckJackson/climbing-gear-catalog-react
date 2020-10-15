@@ -30,10 +30,15 @@ class GearTest(APITestCase):
         self.assertEqual(request.status_code, status.HTTP_200_OK)
         self.assertEqual(request.data, serializer.data)
 
-    def test_get_gear_by_id(self):
-        # get request for single piece of gear
+    def test_get_valid_single_gear(self):
+        # get request for valid gear piece
         request = self.client.get(reverse('gear-detail', args=[1]))
         gear = Gear.objects.get(id=1)
         serializer = GearSerializer(gear)
         self.assertEqual(request.status_code, status.HTTP_200_OK)
         self.assertEqual(request.data, serializer.data)
+
+    def test_get_invalid_single_gear(self):
+        # get request for invalid gear piece
+        request = self.client.get(reverse('gear-detail', args=[69420]))
+        self.assertEqual(request.status_code, status.HTTP_404_NOT_FOUND)
