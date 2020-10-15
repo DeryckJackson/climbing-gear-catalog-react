@@ -15,6 +15,7 @@ class GearTest(TestCase):
         )
 
     def test_gear_create(self):
+        """ Test module that creates gear in the database """
         gear_cam = Gear.objects.get(name='Cam')
         gear_nut = Gear.objects.get(name='Nut')
         self.assertEquals(
