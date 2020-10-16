@@ -4,6 +4,7 @@ from gear.models import Gear
 from gear.serializers import GearSerializer
 from rest_framework import status
 from rest_framework.test import APIClient, force_authenticate, APITestCase
+import json
 
 
 class GearTest(APITestCase):
@@ -11,11 +12,11 @@ class GearTest(APITestCase):
         User.objects.create(id=1, username='test',
                             password='test1', email='test@test.com')
         self.user = User.objects.get(username='test')
-        Gear.objects.create(
+        self.cam = Gear.objects.create(
             id=1, name='Cam', desc='A cam', brand='OnlyCams', weight_grams='1',
             length_mm='1', width_mm='1', depth_mm='1', locking=False, owner=self.user
         )
-        Gear.objects.create(
+        self.nut = Gear.objects.create(
             id=2, name='Nut', desc='A Nut', brand='OnlyNuts', weight_grams='1',
             length_mm='1', width_mm='1', depth_mm='1', locking=False, owner=self.user
         )
@@ -40,8 +41,18 @@ class GearTest(APITestCase):
 
     def test_get_invalid_single_gear(self):
         # get request for invalid gear piece
-        request = self.client.get(reverse('gear-detail', args=[69420]))
+        request = self.client.get(reverse('gear-detail', args=[69420]))  # Nice
         self.assertEqual(request.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_patch_gear_piece(self):
+        request = self.client.patch(
+            reverse('gear-detail', args=[1]),
+            data=json.dumps({'name': 'EditedCam', }),
+            content_type='application/json')
+        edited_gear = GearSerializer(Gear(id=1, name='EditedCam', desc='A cam', brand='OnlyCams',
+                                          weight_grams='1', length_mm='1', width_mm='1', depth_mm='1', locking=False, owner=self.user))
+        self.assertEqual(request.status_code, status.HTTP_200_OK)
+        self.assertEqual(request.data, edited_gear.data)
 
     def test_delete_gear_piece(self):
         request = self.client.delete(reverse('gear-detail', args=[1]))
