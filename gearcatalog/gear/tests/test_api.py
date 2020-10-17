@@ -20,6 +20,8 @@ class GearTest(APITestCase):
             id=2, name='Nut', desc='A Nut', brand='OnlyNuts', weight_grams='1',
             length_mm='1', width_mm='1', depth_mm='1', locking=False, owner=self.user
         )
+        self.json_gear = GearSerializer(Gear(id=3, name='JsonGear', desc='Jsongear', brand='serial', weight_grams=1,
+                                             length_mm=1, width_mm=1, depth_mm=1, locking=False, owner=self.user))
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)
 
@@ -31,7 +33,7 @@ class GearTest(APITestCase):
         self.assertEqual(request.status_code, status.HTTP_200_OK)
         self.assertEqual(request.data, serializer.data)
 
-    def test_get_valid_single_gear(self):
+    def test_get_valid_gear_piece(self):
         # get request for valid gear piece
         request = self.client.get(reverse('gear-detail', args=[1]))
         gear = Gear.objects.get(id=1)
@@ -39,20 +41,38 @@ class GearTest(APITestCase):
         self.assertEqual(request.status_code, status.HTTP_200_OK)
         self.assertEqual(request.data, serializer.data)
 
-    def test_get_invalid_single_gear(self):
+    def test_get_invalid_gear_piece(self):
         # get request for invalid gear piece
         request = self.client.get(reverse('gear-detail', args=[69420]))  # Nice
         self.assertEqual(request.status_code, status.HTTP_404_NOT_FOUND)
 
+    def test_post_gear_piece(self):
+        request = self.client.post(reverse('gear-list'),
+                                   data=json.dumps(self.json_gear.data),
+                                   content_type='application/json')
+        self.assertEqual(request.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(request.data, self.json_gear.data)
+
+    def test_put_gear_piece(self):
+        request = self.client.put(
+            reverse('gear-detail', args=[1]),
+            data=json.dumps(
+                {'name': 'PutCam', 'desc': 'Putdesc', 'brand': 'PutBrand'}),
+            content_type='application/json')
+        serializer = GearSerializer(
+            Gear(id=1, name='PutCam', desc='Putdesc', brand='PutBrand', weight_grams='1', length_mm='1', width_mm='1', depth_mm='1', locking=False, owner=self.user))
+        self.assertEqual(request.status_code, status.HTTP_200_OK)
+        self.assertEqual(request.data, serializer.data)
+
     def test_patch_gear_piece(self):
         request = self.client.patch(
             reverse('gear-detail', args=[1]),
-            data=json.dumps({'name': 'EditedCam', }),
+            data=json.dumps({'name': 'PatchedCam', }),
             content_type='application/json')
-        edited_gear = GearSerializer(Gear(id=1, name='EditedCam', desc='A cam', brand='OnlyCams',
-                                          weight_grams='1', length_mm='1', width_mm='1', depth_mm='1', locking=False, owner=self.user))
+        serializer = GearSerializer(Gear(id=1, name='PatchedCam', desc='A cam', brand='OnlyCams',
+                                         weight_grams='1', length_mm='1', width_mm='1', depth_mm='1', locking=False, owner=self.user))
         self.assertEqual(request.status_code, status.HTTP_200_OK)
-        self.assertEqual(request.data, edited_gear.data)
+        self.assertEqual(request.data, serializer.data)
 
     def test_delete_gear_piece(self):
         request = self.client.delete(reverse('gear-detail', args=[1]))
