@@ -6,6 +6,11 @@
 
 React App for organizing and keeping track of users climbing gear.
 
+## Screen Shots
+
+![gearPic](gearPic.png)
+![gearDetail](gearDetail.png)
+
 ## Component Diagram
 
 ![diagram](component-diagram.png)
