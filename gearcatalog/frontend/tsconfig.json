@@ -1,8 +1,15 @@
 {
   "compilerOptions": {
+    "plugins": [
+      { 
+        "name": "typescript-tslint-plugin",
+        "suppressWhileTypeErrorsPresent": false,
+      },
+    ],
     "outDir": "./static/frontend",
     "sourceMap": true,
     "strictNullChecks": true,
+    "esModuleInterop": true,
     "module": "es6",
     "jsx": "react",
     "target": "es5",

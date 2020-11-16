@@ -3,12 +3,6 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { AuthReducerState, RootReducerState } from '../../reducers/reducer.types';
 
-type PrivateRouteProps = {
-  // TODO: Find correct React Component type
-  component: any;
-  auth: AuthReducerState;
-};
-
 const PrivateRoute = ({ component: Component, auth, ...rest }: PrivateRouteProps) => (
   <Route
     {...rest}
@@ -23,6 +17,13 @@ const PrivateRoute = ({ component: Component, auth, ...rest }: PrivateRouteProps
     }}
   />
 );
+
+type PrivateRouteProps = {
+  // TODO: Find correct React Component type
+  component: any,
+  auth: AuthReducerState,
+  path: string
+};
 
 const mapStateToProps = (state: RootReducerState) => ({
   auth: state.auth,

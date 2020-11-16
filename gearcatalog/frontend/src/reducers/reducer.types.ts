@@ -4,11 +4,11 @@ export type AuthReducerState = {
   token: string | null;
   isAuthenticated: boolean;
   isLoading: boolean;
-  user: User;
+  user: User | null;
 };
 
 export type RootReducerState = {
-  // TODO: Define reducer types with any type
+  // TODO: Define reducer types with the "any" type
   gearlist: any;
   errors: any;
   messages: any;

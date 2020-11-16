@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1605485112437" clover="3.2.0">
+  <project timestamp="1605485112437" name="All files">
+    <metrics statements="8" coveredstatements="7" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="2" elements="15" coveredelements="12" complexity="0" loc="8" ncloc="8" packages="1" files="1" classes="1"/>
+    <file name="PrivateRoute.tsx" path="/home/deryck/projects/climbing-gear-catalog-react/gearcatalog/frontend/src/components/common/PrivateRoute.tsx">
+      <metrics statements="8" coveredstatements="7" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="2"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="7" count="2" type="stmt"/>
+      <line num="10" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="11" count="1" type="stmt"/>
+      <line num="12" count="1" type="cond" truecount="1" falsecount="1"/>
+      <line num="13" count="0" type="stmt"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="28" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
