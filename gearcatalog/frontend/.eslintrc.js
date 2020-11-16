@@ -14,8 +14,8 @@ module.exports = {
     },
   },
   extends: [
+    'eslint:recommended',
     'plugin:react/recommended',
-    'react-app',
     'plugin:@typescript-eslint/recommended',
   ],
 
@@ -24,5 +24,7 @@ module.exports = {
     'no-console': 'warn',
     '@typescript-eslint/no-unused-vars': 'error',
   },
-  plugins: ['jest'],
+  plugins: [
+    'jest',
+  ],
 };

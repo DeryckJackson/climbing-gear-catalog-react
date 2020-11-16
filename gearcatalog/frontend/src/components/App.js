@@ -63,4 +63,5 @@ class App extends Component {
   }
 }
 
+// eslint-disable-next-line no-undef
 ReactDOM.render(<App />, document.getElementById("app"));
