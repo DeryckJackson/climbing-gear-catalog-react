@@ -1,44 +1,47 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import { login } from "../../actions/auth";
+import { RootReducerState } from "../../reducers/reducer.types";
 
-export class Login extends Component {
-  state = {
-    username: "",
-    password: "",
-  };
+type LoginProps = {
+  isAuthenticated: boolean,
+  login: (username: string, password: string) => void,
+};
 
-  static propTypes = {
-    login: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool,
-  };
+const Login = ({ isAuthenticated, login }: LoginProps) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  onSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    this.props.login(this.state.username, this.state.password);
+    login(username, password);
   };
 
-  onChange = (e) => this.setState({ [e.target.name]: e.target.value });
-
-  render() {
-    if (this.props.isAuthenticated) {
-      return <Redirect to="/" />;
+  const onChange = (e) => {
+    if (e.target.name == 'username') {
+      setUsername(e.target.value);
+    } else {
+      setPassword(e.target.value);
     }
-    const { username, password } = this.state;
-    return (
-      <div className="col-md-6 m-auto">
+  };
+
+  if (isAuthenticated) {
+    return <Redirect to="/" />;
+  }
+
+  return (
+    <div className="col-md-6 m-auto">
         <div className="card card-body mt-5">
           <h2 className="text-center">Login</h2>
-          <form onSubmit={this.onSubmit}>
+          <form onSubmit={onSubmit}>
             <div className="form-group">
               <label>Username</label>
               <input
                 type="text"
                 className="form-control"
                 name="username"
-                onChange={this.onChange}
+                onChange={onChange}
                 value={username}
               />
             </div>
@@ -49,7 +52,7 @@ export class Login extends Component {
                 type="password"
                 className="form-control"
                 name="password"
-                onChange={this.onChange}
+                onChange={onChange}
                 value={password}
               />
             </div>
@@ -60,17 +63,16 @@ export class Login extends Component {
               </button>
             </div>
             <p>
-              Don't have an account? <Link to="/register">Register</Link>
+              Don&apo;t have an account? <Link to="/register">Register</Link>
             </p>
           </form>
         </div>
       </div>
-    );
-  }
-}
+  );
+};
 
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
+const mapStateToProps = (state: RootReducerState) => ({
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProps, { login })(Login);
