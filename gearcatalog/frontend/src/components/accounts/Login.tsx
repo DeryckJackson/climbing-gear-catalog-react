@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../actions/auth";
 import { RootReducerState } from "../../reducers/reducer.types";
@@ -10,6 +10,7 @@ type LoginProps = {
 };
 
 const Login = ({ isAuthenticated, login }: LoginProps) => {
+  const history = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -27,7 +28,7 @@ const Login = ({ isAuthenticated, login }: LoginProps) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to="/" />;
+    history.push('/');
   }
 
   return (
