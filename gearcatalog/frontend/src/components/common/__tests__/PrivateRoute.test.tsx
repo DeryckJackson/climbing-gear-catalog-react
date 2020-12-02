@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { HashRouter as Switch } from 'react-router-dom';
+import { mount } from 'enzyme';
+import { MemoryRouter, Redirect } from 'react-router-dom';
 import PrivateRoute from '../PrivateRoute';
 
 jest.mock('react-redux');
@@ -18,19 +19,16 @@ describe('PrivateRoute', () => {
       isLoading: true,
       user: null,
     }
-  }
+  };
 
-    const { root } = renderer.create(
-      <Switch>
-        <PrivateRoute
-        path='/'
-        component={'div'} 
-        {...props} />
-      </Switch>
+    const wrapper = mount(
+      <MemoryRouter initialEntries={['/']} >
+        <PrivateRoute path='/' component={'div'} {...props} />
+      </MemoryRouter>
     );
 
-    expect(root.findByType(PrivateRoute)).toBeDefined();
-    expect(root.findByType('h2')).toBeDefined();
+    expect(wrapper.contains(<h2>Loading...</h2>)).toBe(true);
+    wrapper.unmount();
   });
 
   test('Should render component and return authorized route component', () => {
@@ -41,41 +39,35 @@ describe('PrivateRoute', () => {
         isLoading: false,
         user: null,
       },
-    }
+    };
 
-    const { root } = renderer.create(
-      <Switch>
-        <PrivateRoute
-        path='/'
-        component={'div'} 
-        {...props} />
-      </Switch>
+    const wrapper = mount(
+      <MemoryRouter initialEntries={['/']} >
+        <PrivateRoute path='/' component={() => <div/>} {...props} />
+      </MemoryRouter>
     );
 
-    expect(root.findByType(PrivateRoute)).toBeDefined();
-    expect(root.findByType('div')).toBeDefined();
+    expect(wrapper.contains(<div/>)).toBe(true);
+    wrapper.unmount();
   });
 
-  /* TODO: Redo this after Login component is converted to a functional component
-  test('Should render Login Component', () => {
-    const authMock = {
-      token: 'foo',
-      isAuthenticated: false,
-      isLoading: false,
-      user: null,
-    }
+  test('Should return redirect to login component', () => {
+    const props = {
+      auth: {
+        token: 'foo',
+        isAuthenticated: false,
+        isLoading: false,
+        user: null,
+      },
+    };
 
-    const { root } = renderer.create(
-      <Switch>
-        <PrivateRoute
-          exact
-          auth={authMock}
-          path='/'
-          component={<div />} />
-      </Switch>
+    const wrapper = mount(
+      <MemoryRouter initialEntries={['/']} >
+        <PrivateRoute path='/' component={() => <div/>} {...props} />
+      </MemoryRouter>
     );
 
-    console.log(root.find(Login))
-    expect(root.find((x) => x == Login )).toEqual(true);
-  }) */
-})
+    expect(wrapper.contains(<Redirect to="/login" />)).toBe(true);
+    wrapper.unmount();
+  });
+});
