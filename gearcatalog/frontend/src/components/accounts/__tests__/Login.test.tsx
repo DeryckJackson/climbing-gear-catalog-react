@@ -2,11 +2,24 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Login from '../Login';
-import { Redirect } from 'react-router-dom';
+
+const mockHistoryPush = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  useHistory: () => ({
+    push: mockHistoryPush,
+  }),
+}));
+
+beforeEach(() => {
+  jest.clearAllMocks();
+});
 
 describe('Login', () => {
   test('Should render component', () => {
-    expect(shallow(<Login />).contains(
+    const wrapper = shallow(<Login />);
+
+    expect(wrapper.contains(
     <div className="form-group">
       <button type="submit" className="btn btn-primary">
         Login
@@ -42,9 +55,10 @@ describe('Login', () => {
     const props = {
       isAuthenticated: true,
     };
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const wrapper = shallow(<Login {...props}/>);
 
-    expect(wrapper.contains(<Redirect to="/" />)).toBe(true);
+    expect(mockHistoryPush).toHaveBeenCalledWith('/');
   });
 
   test('Should call login prop', () => {
