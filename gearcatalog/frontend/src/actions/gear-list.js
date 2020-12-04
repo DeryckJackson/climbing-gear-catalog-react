@@ -1,7 +1,6 @@
 import axios from "axios";
 import { createMessage, returnErrors } from "./messages";
 import { tokenConfig } from "./auth";
-import { redirect } from "./redirect";
 
 import * as c from "./types";
 
@@ -30,7 +29,6 @@ export const deleteGear = (id) => (dispatch, getState) => {
         type: c.DELETE_GEAR,
         payload: id,
       });
-      dispatch(redirect("/"));
     })
     .catch((err) =>
       dispatch(returnErrors(err.response.data, err.response.status))
@@ -78,7 +76,6 @@ export const editGear = (gear) => (dispatch, getState) => {
         type: c.EDIT_GEAR,
         payload: res.data,
       });
-      dispatch(redirect("/"));
     })
     .catch((err) =>
       dispatch(returnErrors(err.response.data, err.response.status))
