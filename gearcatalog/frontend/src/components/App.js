@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import ReactDOM from "react-dom";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 
@@ -63,5 +62,4 @@ class App extends Component {
   }
 }
 
-// eslint-disable-next-line no-undef
-ReactDOM.render(<App />, document.getElementById("app"));
+export default App;

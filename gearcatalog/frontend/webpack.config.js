@@ -1,9 +1,10 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.tsx',
   output: {
-    filename: './static/frontend/main.js',
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'static/frontend')
   },
   resolve: {
     // changed from extensions: [".js", ".jsx"]
@@ -21,12 +22,6 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        enforce: 'pre',
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'source-map-loader',
-      },
-      {
         test: /\.(png|jpg)$/,
         loader: 'url-loader',
       },
@@ -36,9 +31,4 @@ module.exports = {
       },
     ],
   },
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
-  },
-  devtool: 'source-map',
 };
