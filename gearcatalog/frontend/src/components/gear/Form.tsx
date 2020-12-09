@@ -1,44 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { addGear } from "../../actions/gear-list";
-import { Gear } from './Types';
+import { Gear } from './types';
 import { Link } from "react-router-dom";
+import { useInput } from "../../hooks/useInput";
+// import { DomEvent } from '../../types';
 
 type FormProps = {
-  addGear: (gear: Gear) => void,
+  addGear: (gear) => void,
 };
 
 const Form = ({ addGear }: FormProps) => {
-  const [gearState, setGearState] = useState({
-    name: '',
-    desc: '',
-    brand: '',
-    weight_grams: 0,
-    length_mm: 0,
-    width_mm: 0,
-    depth_mm: 0,
-    locking: "false",
-  });
+  const { value:name, bind:bindName, reset:resetName } = useInput('');
+  const { value:desc, bind:bindDesc, reset:resetDesc } = useInput('');
+  const { value:brand, bind:bindBrand, reset:resetBrand } = useInput('');
+  const { value:weight_grams, bind:bindWeight, reset:resetWeight } = useInput(0);
+  const { value:length_mm, bind:bindLength, reset:resetLength } = useInput(0);
+  const { value:width_mm, bind:bindWidth, reset:resetWidth } = useInput(0);
+  const { value:depth_mm, bind:bindDepth, reset:resetDepth } = useInput(0);
+  const { value:locking, bind:bindLocking, reset:resetLocking } = useInput('false');
 
-  const onChange = (e) => {
-    setGearState({ 
-      [e.target.name]: e.target.value,
-      ...gearState
-    });
-  };
-
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const {
-      name,
-      desc,
-      brand,
-      weight_grams,
-      length_mm,
-      width_mm,
-      depth_mm,
-      locking,
-    } = gearState;
     const gear = {
       name,
       desc,
@@ -50,39 +33,33 @@ const Form = ({ addGear }: FormProps) => {
       locking,
     };
     addGear(gear);
-    setGearState({
-      name: '',
-      desc: '',
-      brand: '',
-      weight_grams: 0,
-      length_mm: 0,
-      width_mm: 0,
-      depth_mm: 0,
-      locking: "false",
-    });
+    resetName();
+    resetDesc();
+    resetBrand();
+    resetWeight();
+    resetLength();
+    resetWidth();
+    resetDepth();
+    resetLocking();
   };
 
   return (
     <div className="card card-body mt-2 mb-2 pb-1 shadow">
       <h2>Add Gear</h2>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Name</label>
           <input
             className="form-control"
             type="text"
-            name="name"
-            onChange={onChange}
-            value={gearState.name}
+            {...bindName}
           />
         </div>
         <div className="form-group">
           <label>Description</label>
           <textarea
             className="form-control"
-            name="desc"
-            onChange={onChange}
-            value={gearState.desc}
+            {...bindDesc}
           />
         </div>
         <div className="form-group">
@@ -90,9 +67,7 @@ const Form = ({ addGear }: FormProps) => {
           <input
             className="form-control"
             type="text"
-            name="brand"
-            onChange={onChange}
-            value={gearState.brand}
+            {...bindBrand}
           />
         </div>
         <div className="form-group">
@@ -101,9 +76,7 @@ const Form = ({ addGear }: FormProps) => {
             className="form-control"
             type="number"
             step="1"
-            name="weight_grams"
-            onChange={onChange}
-            value={gearState.weight_grams}
+            {...bindWeight}
           />
         </div>
         <div className="form-group">
@@ -112,9 +85,7 @@ const Form = ({ addGear }: FormProps) => {
             className="form-control"
             type="number"
             step="1"
-            name="length_mm"
-            onChange={onChange}
-            value={gearState.length_mm}
+            {...bindLength}
           />
         </div>
         <div className="form-group">
@@ -123,9 +94,7 @@ const Form = ({ addGear }: FormProps) => {
             className="form-control"
             type="number"
             step="1"
-            name="width_mm"
-            onChange={onChange}
-            value={gearState.width_mm}
+            {...bindWidth}
           />
         </div>
         <div className="form-group">
@@ -134,18 +103,14 @@ const Form = ({ addGear }: FormProps) => {
             className="form-control"
             type="number"
             step="1"
-            name="depth_mm"
-            onChange={onChange}
-            value={gearState.depth_mm}
+            {...bindDepth}
           />
         </div>
         <div className="form-group">
           <label>Locking</label>
           <select
             className="form-control"
-            name="locking"
-            onChange={onChange}
-            value={gearState.locking}
+            {...bindLocking}
           >
             <option value="false">
               No
