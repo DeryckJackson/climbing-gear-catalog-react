@@ -1,12 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import { addGear } from "../../actions/gear-list";
-import { Gear } from './types';
 import { Link } from "react-router-dom";
 import { useInput } from "../../hooks/useInput";
-// import { DomEvent } from '../../types';
 
 type FormProps = {
+  // TODO: find correct gear type
   addGear: (gear) => void,
 };
 
@@ -20,6 +19,7 @@ const Form = ({ addGear }: FormProps) => {
   const { value:depth_mm, bind:bindDepth, reset:resetDepth } = useInput(0);
   const { value:locking, bind:bindLocking, reset:resetLocking } = useInput('false');
 
+  // TODO: Find correct event type
   const handleSubmit = (e) => {
     e.preventDefault();
     const gear = {
