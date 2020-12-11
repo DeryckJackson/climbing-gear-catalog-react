@@ -64,7 +64,7 @@ const Login = ({ isAuthenticated, login }: LoginProps) => {
               </button>
             </div>
             <p>
-              Don&apo;t have an account? <Link to="/register">Register</Link>
+              Don&apos;t have an account? <Link to="/register">Register</Link>
             </p>
           </form>
         </div>

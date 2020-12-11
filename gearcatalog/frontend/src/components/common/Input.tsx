@@ -1,22 +1,50 @@
 import React from "react";
-import { useInput } from "../../hooks/useInput";
 
-const Input = (props) => {
+type InputProps = {
+  name: string,
+  val: string | number,
+  type: string,
+  setVal: (val: string) => void,
+  step?: string,
+};
+
+export const Input = (props: InputProps): JSX.Element => {
   const {
     name,
-    initialValue,
+    val,
     type,
+    setVal,
+    step,
   } = props;
-  const { value, bind, reset } = useInput(initialValue);
 
-  return (
-    <div className="form-group">
+  const handleChange = (e) => {
+    setVal(e.target.value);
+  };
+
+  if (!step) {
+    return (
+      <div className="form-group">
       <label>{`${name}`}</label>
       <input
         className="form-control"
+        value={`${val}`}
         type={`${type}`}
-        {...bind}
+        step={`${step}`}
+        onChange={handleChange}
       />
     </div>
-  );
+    );
+  } else {
+    return (
+      <div className="form-group">
+        <label>{`${name}`}</label>
+        <input
+          className="form-control"
+          value={`${val}`}
+          type={`${type}`}
+          onChange={handleChange}
+        />
+      </div>
+    );
+  }
 };

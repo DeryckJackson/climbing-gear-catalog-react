@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addGear } from "../../actions/gear-list";
 import { Link } from "react-router-dom";
-import { useInput } from "../../hooks/useInput";
+import { Input } from '../common/Input';
+import { useInput } from '../../hooks/useInput';
 
 type FormProps = {
   // TODO: find correct gear type
@@ -10,13 +11,13 @@ type FormProps = {
 };
 
 const Form = ({ addGear }: FormProps) => {
-  const { value:name, bind:bindName, reset:resetName } = useInput('');
-  const { value:desc, bind:bindDesc, reset:resetDesc } = useInput('');
-  const { value:brand, bind:bindBrand, reset:resetBrand } = useInput('');
-  const { value:weight_grams, bind:bindWeight, reset:resetWeight } = useInput(0);
-  const { value:length_mm, bind:bindLength, reset:resetLength } = useInput(0);
-  const { value:width_mm, bind:bindWidth, reset:resetWidth } = useInput(0);
-  const { value:depth_mm, bind:bindDepth, reset:resetDepth } = useInput(0);
+  const [name, setName] = useState('');
+  const [desc, setDesc] = useState('');
+  const [brand, setBrand] = useState('');
+  const [weight_grams, setWeight] = useState('0');
+  const [length_mm, setLength] = useState('0');
+  const [width_mm, setWidth] = useState('0');
+  const [depth_mm, setDepth] = useState('0');
   const { value:locking, bind:bindLocking, reset:resetLocking } = useInput('false');
 
   // TODO: Find correct event type
@@ -33,13 +34,13 @@ const Form = ({ addGear }: FormProps) => {
       locking,
     };
     addGear(gear);
-    resetName();
-    resetDesc();
-    resetBrand();
-    resetWeight();
-    resetLength();
-    resetWidth();
-    resetDepth();
+    setName('');
+    setDesc('');
+    setBrand('');
+    setWeight('0');
+    setLength('0');
+    setWidth('0');
+    setDepth('0');
     resetLocking();
   };
 
@@ -47,79 +48,64 @@ const Form = ({ addGear }: FormProps) => {
     <div className="card card-body mt-2 mb-2 pb-1 shadow">
       <h2>Add Gear</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Name</label>
-          <input
-            className="form-control"
-            type="text"
-            {...bindName}
+        <Input
+          name={'Name'}
+          type={'text'}
+          val={name}
+          setVal={setName}
           />
-        </div>
-        <div className="form-group">
-          <label>Description</label>
-          <textarea
-            className="form-control"
-            {...bindDesc}
+        <Input
+          name={'Description'}
+          type={'text'}
+          val={desc}
+          setVal={setDesc}
           />
-        </div>
-        <div className="form-group">
-          <label>Brand</label>
-          <input
-            className="form-control"
-            type="text"
-            {...bindBrand}
+        <Input
+          name={'Brand'}
+          type={'text'}
+          val={brand}
+          setVal={setBrand}
           />
-        </div>
-        <div className="form-group">
-          <label>Weight Grams</label>
-          <input
-            className="form-control"
-            type="number"
-            step="1"
-            {...bindWeight}
+        <Input
+          name={'Weight in grams'}
+          type={'number'}
+          step={'1'}
+          val={weight_grams}
+          setVal={setWeight}
           />
-        </div>
-        <div className="form-group">
-          <label>Length MM</label>
-          <input
-            className="form-control"
-            type="number"
-            step="1"
-            {...bindLength}
+        <Input
+          name={'Length in MM'}
+          type={'number'}
+          step={'1'}
+          val={length_mm}
+          setVal={setLength}
           />
-        </div>
-        <div className="form-group">
-          <label>Width MM</label>
-          <input
-            className="form-control"
-            type="number"
-            step="1"
-            {...bindWidth}
+        <Input
+          name={'Width in MM'}
+          type={'number'}
+          step={'1'}
+          val={width_mm}
+          setVal={setWidth}
           />
-        </div>
-        <div className="form-group">
-          <label>Depth MM</label>
-          <input
-            className="form-control"
-            type="number"
-            step="1"
-            {...bindDepth}
+        <Input
+          name={'Depth in MM'}
+          type={'number'}
+          step={'1'}
+          val={depth_mm}
+          setVal={setDepth}
           />
-        </div>
         <div className="form-group">
           <label>Locking</label>
           <select
             className="form-control"
             {...bindLocking}
           >
-            <option value="false">
-              No
-            </option>
+            <option value="false">No</option>
             <option value="true">Yes</option>
           </select>
         </div>
         <div className="form-group">
-          <button type="submit" className="btn btn-success mb-4 rounded">
+          <button type="submit" className="btn btn-success mb-3 rounded">
             Submit
           </button>
           <br />
