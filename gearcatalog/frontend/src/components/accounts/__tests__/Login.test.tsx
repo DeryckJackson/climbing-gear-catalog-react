@@ -9,6 +9,7 @@ jest.mock('react-router-dom', () => ({
   useHistory: () => ({
     push: mockHistoryPush,
   }),
+  Link: 'Link',
 }));
 
 beforeEach(() => {

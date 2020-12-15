@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addGear } from "../../actions/gear-list";
 import { Link } from "react-router-dom";
-import { Input } from '../common/Input';
+import Input from '../common/Input';
 import { useInput } from '../../hooks/useInput';
 
 type FormProps = {

@@ -8,7 +8,7 @@ type InputProps = {
   step?: string,
 };
 
-export const Input = (props: InputProps): JSX.Element => {
+const Input = (props: InputProps): JSX.Element => {
   const {
     name,
     val,
@@ -21,7 +21,7 @@ export const Input = (props: InputProps): JSX.Element => {
     setVal(e.target.value);
   };
 
-  if (!step) {
+  if (step) {
     return (
       <div className="form-group">
       <label>{`${name}`}</label>
@@ -48,3 +48,5 @@ export const Input = (props: InputProps): JSX.Element => {
     );
   }
 };
+
+export default Input;

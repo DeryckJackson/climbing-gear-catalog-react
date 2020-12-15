@@ -1,6 +1,10 @@
 import { useInput } from '../useInput';
 import React from 'react';
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 describe('useInput', () => {
   const setState = jest.fn();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
