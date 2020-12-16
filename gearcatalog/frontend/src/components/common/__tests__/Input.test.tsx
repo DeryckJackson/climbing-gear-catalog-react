@@ -18,7 +18,8 @@ describe('Input', () => {
     const wrapper = shallow(<Input {...props}/>);
 
     expect(wrapper.contains(<label>foo</label>)).toBe(true);
-    expect(wrapper.containsMatchingElement(<input type="text"></input>)).toBe(true);
+    expect(wrapper.containsMatchingElement(<input type="text"></input>))
+    .toBe(true);
   });
 
   test('Should render component and return div with number input', () => {
@@ -33,7 +34,9 @@ describe('Input', () => {
     const wrapper = shallow(<Input {...props}/>);
 
     expect(wrapper.contains(<label>foo</label>)).toBe(true);
-    expect(wrapper.containsMatchingElement(<input type="number" step="1"></input>)).toBe(true);
+    expect(wrapper
+      .containsMatchingElement(<input type="number" step="1"></input>))
+      .toBe(true);
   });
 
   test('Should render component simulate onChange event', () => {

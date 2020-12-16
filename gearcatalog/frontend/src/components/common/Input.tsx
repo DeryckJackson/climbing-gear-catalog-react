@@ -9,13 +9,7 @@ type InputProps = {
 };
 
 const Input = (props: InputProps): JSX.Element => {
-  const {
-    name,
-    val,
-    type,
-    setVal,
-    step,
-  } = props;
+  const { name, val, type, setVal, step } = props;
 
   const handleChange = (e) => {
     setVal(e.target.value);

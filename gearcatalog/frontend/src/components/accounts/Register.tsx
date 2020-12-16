@@ -17,7 +17,8 @@ type User = {
   email: string,
 };
 
-const Register = ({register, createMessage, isAuthenticated}: RegisterProps) => {
+const Register = ({register, createMessage, isAuthenticated}: RegisterProps) =>
+{
   const history = useHistory();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');

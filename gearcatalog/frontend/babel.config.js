@@ -5,7 +5,7 @@ module.exports = {
     ['@babel/preset-typescript'],
   ],
   plugins: [
-    // TODO:#1 Remove after converting GearList component to functional
+    // TODO:#3 Remove after converting GearList component to functional
     ['@babel/plugin-proposal-class-properties']
   ]
 };

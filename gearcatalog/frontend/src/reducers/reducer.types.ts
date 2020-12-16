@@ -8,7 +8,7 @@ export type AuthReducerState = {
 };
 
 export type RootReducerState = {
-  // TODO:#5 Define reducer types with the "any" type
+  // TODO:#7 Define reducer types with the "any" type
   gearlist: any;
   errors: any;
   messages: any;

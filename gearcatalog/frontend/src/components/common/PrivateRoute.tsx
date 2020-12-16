@@ -1,9 +1,13 @@
 import * as React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { AuthReducerState, RootReducerState } from '../../reducers/reducer.types';
+import {
+  AuthReducerState,
+  RootReducerState
+} from '../../reducers/reducer.types';
 
-const PrivateRoute = ({ component: Component, auth, ...rest }: PrivateRouteProps) => (
+const PrivateRoute = ({ component: Component, auth, ...rest }:
+  PrivateRouteProps) => (
   <Route
     {...rest}
     render={(props) => {
@@ -19,7 +23,7 @@ const PrivateRoute = ({ component: Component, auth, ...rest }: PrivateRouteProps
 );
 
 type PrivateRouteProps = {
-  // TODO:#2 Find correct React Component type
+  // TODO:#4 Find correct React Component type
   component: any,
   auth: AuthReducerState,
   path: string
