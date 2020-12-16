@@ -4,9 +4,10 @@ import { addGear } from "../../actions/gear-list";
 import { Link } from "react-router-dom";
 import Input from '../common/Input';
 import { useInput } from '../../hooks/useInput';
+import { DomEvent } from "../../types";
 
 type FormProps = {
-  // TODO: find correct gear type
+  // TODO:#4 find correct gear type
   addGear: (gear) => void,
 };
 
@@ -20,7 +21,7 @@ const Form = ({ addGear }: FormProps) => {
   const [depth_mm, setDepth] = useState('0');
   const { value:locking, bind:bindLocking, reset:resetLocking } = useInput('false');
 
-  // TODO: Find correct event type
+  // TODO:#3 Find correct event type
   const handleSubmit = (e) => {
     e.preventDefault();
     const gear = {

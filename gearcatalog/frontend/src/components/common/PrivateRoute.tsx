@@ -19,7 +19,7 @@ const PrivateRoute = ({ component: Component, auth, ...rest }: PrivateRouteProps
 );
 
 type PrivateRouteProps = {
-  // TODO: Find correct React Component type
+  // TODO:#2 Find correct React Component type
   component: any,
   auth: AuthReducerState,
   path: string
