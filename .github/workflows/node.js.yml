@@ -18,6 +18,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install
+      working-directory: ./gearcatalog/frontend
     - run: npm test
       working-directory: ./gearcatalog/frontend
       env:
