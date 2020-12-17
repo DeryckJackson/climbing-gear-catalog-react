@@ -50,6 +50,13 @@ npm install
 npm run dev
 ```
 
+- Install python dependencies
+
+```
+pipenv shell
+pipenv install
+```
+
 - Open new terminal
 - Run the python migration
 
@@ -64,7 +71,7 @@ python manage.py migrate
 ```
 python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
 ```
-
+- Create a .env file in the `gearcatalog/gearcatalog` directory
 - Add the generated key to the .env file with the following key
 
 ```
@@ -91,5 +98,3 @@ python manage.py runserver
 ### License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
-
-Copyright (c) 2020 Deryck Jackson

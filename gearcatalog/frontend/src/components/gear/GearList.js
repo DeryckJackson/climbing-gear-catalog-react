@@ -83,7 +83,6 @@ export class GearList extends Component {
 const mapStateToProps = (state) => {
   return {
     gearList: state.gearList.gearList,
-    redirect: state.redirect.redirect,
   };
 };
 

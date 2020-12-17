@@ -1,0 +1,6 @@
+node_modules/
+static/frontend/
+templates/frontend/
+migrations/
+__pycache__/
+webpack.config.js

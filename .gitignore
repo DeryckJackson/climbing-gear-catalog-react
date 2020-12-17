@@ -11,7 +11,10 @@ coverage
 
 # production
 /build
-gearcatalog/frontend/static/frontend/main.js
+gearcatalog/frontend/dist
+
+# dev
+gearcatalog/frontend/static
 
 # misc
 .DS_Store

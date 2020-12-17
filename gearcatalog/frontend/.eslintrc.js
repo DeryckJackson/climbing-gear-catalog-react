@@ -23,6 +23,7 @@ module.exports = {
     '@typescript-eslint/semi': ['error'],
     'no-console': 'warn',
     '@typescript-eslint/no-unused-vars': 'error',
+    'max-len': ['error', {'code': 80}]
   },
   plugins: [
     'jest',

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import GearList from "./GearList";
 
 const Dashboard = () => (
-  <GearList />
+  <Fragment>
+    <GearList />
+  </Fragment>
 );
 
 export default Dashboard;
