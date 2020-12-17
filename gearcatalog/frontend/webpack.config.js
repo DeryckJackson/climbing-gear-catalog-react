@@ -1,9 +1,11 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.tsx',
+  devtool: 'inline-source-map',
   output: {
-    filename: './static/frontend/main.js',
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'static/frontend')
   },
   resolve: {
     // changed from extensions: [".js", ".jsx"]
@@ -21,12 +23,6 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        enforce: 'pre',
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'source-map-loader',
-      },
-      {
         test: /\.(png|jpg)$/,
         loader: 'url-loader',
       },
@@ -34,11 +30,11 @@ module.exports = {
         test: /\.(png|svg|jpg|gif)$/,
         use: ['file-loader'],
       },
+      {
+        test: /\.js$/,
+        enforce: "pre",
+        use: ["source-map-loader"],
+      },
     ],
   },
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
-  },
-  devtool: 'source-map',
 };

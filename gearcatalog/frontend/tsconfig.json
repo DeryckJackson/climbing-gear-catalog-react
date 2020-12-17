@@ -11,8 +11,8 @@
     "strictNullChecks": true,
     "esModuleInterop": true,
     "module": "es6",
-    "jsx": "react",
     "target": "es5",
+    "jsx": "react",
     "allowJs": true,
     "moduleResolution": "node"
   },
