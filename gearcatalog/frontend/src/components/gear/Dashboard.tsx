@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import GearList from "./GearList";
 
-const Dashboard = () => (
+const Dashboard = (): JSX.Element => (
   <Fragment>
     <GearList />
   </Fragment>
