@@ -18,7 +18,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
       working-directory: ./gearcatalog/frontend
-    - run: npm lint
+    - run: npm run lint
       working-directory: ./gearcatalog/frontend
       env:
         CI: true
