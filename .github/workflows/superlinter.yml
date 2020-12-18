@@ -23,8 +23,8 @@ jobs:
         env:
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          JAVASCRIPT_ES_CONFIG_FILE: gearcatalog/frontend/.eslintrc.js
-          PYTHON_PYLINT_CONFIG_FILE: .pylintrc
+#           JAVASCRIPT_ES_CONFIG_FILE: gearcatalog/frontend/.eslintrc.js
+#           PYTHON_PYLINT_CONFIG_FILE: .pylintrc
           VALIDATE_JAVASCRIPT_STANDARD: false
           FILTER_REGEX_INCLUDE: .*gearcatalog/frontend/src/.* .*gearcatalog/.*.py
           FILTER_REGEX_EXCLUDE: .*.js
