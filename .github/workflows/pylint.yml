@@ -17,4 +17,4 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64
       - run: pip3 install pylint
-      - run: pylint  gearcatalog/**/*.py
+      - run: pylint rcfile=.pylintrc gearcatalog/**/*.py
