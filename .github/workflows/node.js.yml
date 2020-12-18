@@ -21,5 +21,7 @@ jobs:
       working-directory: ./gearcatalog/frontend
     - run: npm test
       working-directory: ./gearcatalog/frontend
+    - run: npm lint
+      working-directory: ./gearcatalog/frontend
       env:
         CI: true
