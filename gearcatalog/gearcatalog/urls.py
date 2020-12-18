@@ -1,4 +1,4 @@
-from django.contrib import admin
+from django.contrib import admin # pylint: disable=unused-import
 from django.urls import path, include
 
 urlpatterns = [

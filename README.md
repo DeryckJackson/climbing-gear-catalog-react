@@ -33,26 +33,26 @@ React App for organizing and keeping track of users climbing gear.
 - Navigate to the parent directory you would like to store the project's directory in.
 - Clone the repository from github, and navigate to its directory.
 
-```
+```sh
 git clone https://github.com/DeryckJackson/climbing-gear-catalog-react
 cd climbing-gear-catalog-react
 ```
 
 - Install required dependencies.
 
-```
+```sh
 npm install
 ```
 
 - Run the application (You will need two terminals open)
 
-```
+```sh
 npm run dev
 ```
 
 - Install python dependencies
 
-```
+```sh
 pipenv shell
 pipenv install
 ```
@@ -60,7 +60,7 @@ pipenv install
 - Open new terminal
 - Run the python migration
 
-```
+```sh
 cd gearcatalog
 python manage.py migrate
 ```
@@ -68,7 +68,7 @@ python manage.py migrate
 - Add a .env file to the `gearcatalog` directory.
 - Generate a new django secret key by running the follow command
 
-```
+```sh
 python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
 ```
 - Create a .env file in the `gearcatalog/gearcatalog` directory
@@ -80,7 +80,7 @@ SECRET_KEY = {YOUR_NEW_SECRET_KEY}
 
 - Run the python backend server
 
-```
+```sh
 python manage.py runserver
 ```
 

@@ -1,3 +1,13 @@
 [MASTER]
 disable=
     C0114, # missing-module-docstring
+[MESSAGES CONTROL]
+disable=unused-argument
+[FORMAT]
+max-line-length:80
+[DESIGN]
+disable=too-few-public-methods
+[CLASS]
+disable=abstract-method, arguments-differ
+[BASIC]
+disable=invalid-name

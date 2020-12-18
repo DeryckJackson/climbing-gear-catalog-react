@@ -1,6 +1,7 @@
 import * as c from '../actions/types';
 
 const initialState = {
+  // eslint-disable-next-line no-undef
   token: localStorage.getItem('token'),
   isAuthenticated: false,
   isLoading: false,
@@ -23,6 +24,7 @@ export default function (state = initialState, action) {
       };
     case c.LOGIN_SUCCESS:
     case c.REGISTER_SUCCESS:
+      // eslint-disable-next-line no-undef
       localStorage.setItem('token', action.payload.token);
       return {
         ...state,
@@ -34,6 +36,7 @@ export default function (state = initialState, action) {
     case c.LOGIN_FAIL:
     case c.LOGOUT_SUCCESS:
     case c.REGISTER_FAIL:
+      // eslint-disable-next-line no-undef
       localStorage.removeItem('token');
       return {
         ...state,

@@ -105,7 +105,7 @@ describe('Login', () => {
     expect(props.register).toHaveBeenCalledTimes(1);
   });
 
-  test('Should simulate onSubmit event and pass password logic check', () => {
+  test('Should simulate onChange event and update input values', () => {
     const props = {
       createMessage: jest.fn(),
       register: jest.fn(),
