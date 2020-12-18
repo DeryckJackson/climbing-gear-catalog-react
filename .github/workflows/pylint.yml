@@ -1,0 +1,17 @@
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.x']
+    name: Python ${{ matrix.python-version }} sample
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
+      - run: pipenv shell
+      - run: pipenv install
+      - run: pylint gearcatalog/**/*.py
