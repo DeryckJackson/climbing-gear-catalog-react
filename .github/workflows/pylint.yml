@@ -11,13 +11,15 @@ jobs:
     name: Python ${{ matrix.python-version }} sample
     steps:
       - uses: actions/checkout@v2
-      - name: Setup python and run linter
+      - name: Setup python
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
-      - run: |
+      - name: Install dependencies 
+        run: |
           python -m pip install --upgrade pip
-          pip install django-rest-framework
+          pip install django-rest-framework django-rest-knox python-dotenv
           pip install pylint
-      - run: pylint --rcfile=.pylintrc gearcatalog/**/*.py
+      - name: Run linter
+        run: pylint --rcfile=.pylintrc gearcatalog/**/*.py
