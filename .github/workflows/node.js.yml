@@ -13,10 +13,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Python Pylin GitHub Action
-      uses: fylein/python-pylint-github-action@v1
-      with:
-          args: pip3 install -r requirements.txt && pylint --rcfile=.pylintrc gearcatalog/**/*.py
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -24,8 +20,6 @@ jobs:
     - run: npm install
       working-directory: ./gearcatalog/frontend
     - run: npm test
-      working-directory: ./gearcatalog/frontend
-    - run: npm lint
       working-directory: ./gearcatalog/frontend
       env:
         CI: true
