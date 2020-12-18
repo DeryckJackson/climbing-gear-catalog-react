@@ -64,6 +64,7 @@ const Login = ({ isAuthenticated, login }: LoginProps) => {
               </button>
             </div>
             <p>
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
               Don't have an account? <Link to="/register">Register</Link>
             </p>
           </form>

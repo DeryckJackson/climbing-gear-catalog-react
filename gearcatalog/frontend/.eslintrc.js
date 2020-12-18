@@ -1,6 +1,5 @@
 module.exports = {
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
-
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
@@ -12,20 +11,25 @@ module.exports = {
     react: {
       version: 'detect',
     },
+    jest: {
+      version: 'detect',
+    }
   },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
+    'plugin:jest/recommended',
     'plugin:@typescript-eslint/recommended',
   ],
 
   rules: {
     '@typescript-eslint/semi': ['error'],
     'no-console': 'warn',
-    '@typescript-eslint/no-unused-vars': 'error',
     'max-len': ['error', {'code': 80}]
   },
   plugins: [
     'jest',
+    '@typescript-eslint',
+    'react',
   ],
 };
