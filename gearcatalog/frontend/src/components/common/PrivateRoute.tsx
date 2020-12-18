@@ -24,6 +24,7 @@ const PrivateRoute = ({ component: Component, auth, ...rest }:
 
 type PrivateRouteProps = {
   // TODO:#4 Find correct React Component type
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component: any,
   auth: AuthReducerState,
   path: string

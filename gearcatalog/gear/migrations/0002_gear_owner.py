@@ -6,7 +6,7 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
+    """Database Migration"""
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ('gear', '0001_initial'),
@@ -16,6 +16,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='gear',
             name='owner',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='gear', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='gear', to=settings.AUTH_USER_MODEL),
         ),
     ]
