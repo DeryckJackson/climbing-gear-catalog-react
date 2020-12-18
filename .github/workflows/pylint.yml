@@ -16,7 +16,5 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
-      - run: pip3 install pipenv
-      - run: pipenv shell
-      - run: pipenv install
-      - run: pylint gearcatalog/**/*.py
+      - run: pip3 install pylint
+      - run: pylint  gearcatalog/**/*.py
