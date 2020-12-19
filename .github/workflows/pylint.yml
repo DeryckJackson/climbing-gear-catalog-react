@@ -1,0 +1,19 @@
+name: Python Lint
+on: [push]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+          architecture: x64
+      - name: Install pipenv
+        run: pip install pipenv
+      - name: Install dependencies
+        run: pipenv install --dev
+      - name: Run linter
+        run: pipenv run pylint --rcfile=.pylintrc gearcatalog/**/*.py

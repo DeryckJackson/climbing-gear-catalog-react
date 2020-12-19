@@ -1,0 +1,27 @@
+name: TS Lint
+on: [push]
+
+jobs:
+  lint:
+    name: Lint Typescript
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup node
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install dependencies
+      run: npm install
+      working-directory: ./gearcatalog/frontend
+    - name: Run linting script
+      run: npm run lint
+      working-directory: ./gearcatalog/frontend
+      env:
+        CI: true
