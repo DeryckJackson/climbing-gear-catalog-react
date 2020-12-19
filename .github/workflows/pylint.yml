@@ -16,4 +16,4 @@ jobs:
       - name: Install dependencies
         run: pipenv install --dev
       - name: Run linter
-        run: pylint --rcfile=.pylintrc gearcatalog/**/*.py
+        run: pipenv run pylint --rcfile=.pylintrc gearcatalog/**/*.py
