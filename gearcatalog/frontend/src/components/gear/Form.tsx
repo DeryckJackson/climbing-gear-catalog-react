@@ -7,7 +7,7 @@ import { useInput } from '../../hooks/useInput';
 
 type FormProps = {
   // TODO:#6 find correct gear type
-  addGear: (gear, token) => void,
+  addGear: (gear, token: string) => void,
   token: string,
 };
 
