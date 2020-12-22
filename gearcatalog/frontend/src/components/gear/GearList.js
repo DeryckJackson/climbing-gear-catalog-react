@@ -10,13 +10,16 @@ export class GearList extends Component {
     gearList: PropTypes.array.isRequired,
     getGear: PropTypes.func,
     deleteGear: PropTypes.func,
+    token: PropTypes.string,
   };
 
   componentDidMount() {
-    this.props.getGear();
+    this.props.getGear(this.props.token);
   }
 
   render() {
+    const { token } = this.props;
+
     if (this.props.gearList.length == 0) {
       return (
         <Fragment>
@@ -56,7 +59,7 @@ export class GearList extends Component {
                     View
                   </Link>
                   <button
-                    onClick={this.props.deleteGear.bind(this, gear.id)}
+                    onClick={() => this.props.deleteGear(gear.id, token)}
                     className="btn-danger btn btn-sm float-right rounded"
                   >
                     Delete
@@ -83,6 +86,7 @@ export class GearList extends Component {
 const mapStateToProps = (state) => {
   return {
     gearList: state.gearList.gearList,
+    token: state.auth.token,
   };
 };
 
