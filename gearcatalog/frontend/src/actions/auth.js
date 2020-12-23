@@ -4,12 +4,12 @@ import { returnErrors } from "./messages";
 import * as c from "./types";
 
 // CHECK TOKEN & LOAD USER
-export const loadUser = () => (dispatch, getState) => {
+export const loadUser = (token) => (dispatch) => {
   // User Loading
   dispatch({ type: c.USER_LOADING });
 
   axios
-    .get("/api/auth/user", tokenConfig(getState))
+    .get("/api/auth/user", tokenConfig(token))
     .then((res) => {
       dispatch({
         type: c.USER_LOADED,
@@ -81,9 +81,9 @@ export const register = ({ username, password, email }) => (dispatch) => {
 };
 
 // LOGOUT USER
-export const logout = () => (dispatch, getState) => {
+export const logout = (token) => (dispatch) => {
   axios
-    .post("/api/auth/logout/", null, tokenConfig(getState))
+    .post("/api/auth/logout/", null, tokenConfig(token))
     .then((res) => {
       dispatch({ type: "CLEAR_LEADS" });
       dispatch({
@@ -96,9 +96,8 @@ export const logout = () => (dispatch, getState) => {
 };
 
 // Setup config with token - helper function
-export const tokenConfig = (getState) => {
+export const tokenConfig = (token) => {
   // Get token from state
-  const token = getState().auth.token;
 
   // Headers
   const config = {

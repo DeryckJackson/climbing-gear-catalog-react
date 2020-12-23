@@ -7,10 +7,11 @@ import { useInput } from '../../hooks/useInput';
 
 type FormProps = {
   // TODO:#6 find correct gear type
-  addGear: (gear) => void,
+  addGear: (gear, token: string) => void,
+  token: string,
 };
 
-const Form = ({ addGear }: FormProps) => {
+const Form = ({ addGear, token }: FormProps) => {
   const [name, setName] = useState('');
   const [desc, setDesc] = useState('');
   const [brand, setBrand] = useState('');
@@ -34,7 +35,7 @@ const Form = ({ addGear }: FormProps) => {
       depth_mm,
       locking,
     };
-    addGear(gear);
+    addGear(gear, token);
     setName('');
     setDesc('');
     setBrand('');
@@ -104,4 +105,10 @@ const Form = ({ addGear }: FormProps) => {
   );
 };
 
-export default connect(null, { addGear })(Form);
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth.token,
+  };
+};
+
+export default connect(mapStateToProps, { addGear })(Form);

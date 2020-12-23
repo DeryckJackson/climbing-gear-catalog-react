@@ -3,7 +3,6 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 
 import Header from "./layout/Header";
-import Footer from "./layout/Footer";
 import Alerts from "./layout/Alerts";
 
 import Login from "./accounts/Login";
@@ -32,7 +31,7 @@ const alertOptions = {
 
 class App extends Component {
   componentDidMount() {
-    store.dispatch(loadUser());
+    store.dispatch(loadUser(store.getState().auth.token));
   }
 
   render() {
