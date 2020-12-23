@@ -2,22 +2,26 @@ import React, { Component, Fragment } from "react";
 import { selectGear, deleteGear } from "../../actions/gear-list";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import LinkButton from "../layout/LinkButton";
 
 export class GearDetail extends Component {
   static propTypes = {
     selectedGear: PropTypes.object.isRequired,
+    token: PropTypes.string
   };
 
   componentDidMount() {
     const {
       match: { params },
+      token,
+      selectGear,
     } = this.props;
-    this.props.selectGear(params.id);
+    selectGear(params.id, token);
   }
 
   render() {
+    const { token, deleteGear } = this.props;
     const {
       id,
       name,
@@ -30,13 +34,10 @@ export class GearDetail extends Component {
       locking,
     } = this.props.selectedGear;
 
-    if (this.props.redirect) {
-      return <Redirect to={this.props.redirect} />;
-    }
-
     return (
       <Fragment>
-        <div className="card card-body justify-content-center rounded shadow mt-2">
+        <div className="card card-body justify-content-center rounded
+        shadow mt-2">
           <h2 className="my-2">Gear Detail</h2>
           <div
             className="card border-primary rounded shadow mb-3"
@@ -68,7 +69,7 @@ export class GearDetail extends Component {
                 Edit
               </Link>
               <button
-                onClick={this.props.deleteGear.bind(this, id)}
+                onClick={() => deleteGear(id, token)}
                 className="btn-danger btn float-right rounded"
               >
                 Delete
@@ -89,7 +90,7 @@ export class GearDetail extends Component {
 const mapStateToProps = (state) => {
   return {
     selectedGear: state.gearList.selectedGear,
-    redirect: state.redirect.redirect,
+    token: state.auth.token
   };
 };
 

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { editGear, selectGear } from "../../actions/gear-list";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export class Form extends Component {
   state = {
@@ -19,8 +19,9 @@ export class Form extends Component {
   componentDidMount() {
     const {
       match: { params },
+      token,
     } = this.props;
-    this.props.selectGear(params.id);
+    this.props.selectGear(params.id, token);
   }
 
   static propTypes = {
@@ -32,6 +33,7 @@ export class Form extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
+    const { token } = this.props;
     const {
       name,
       desc,
@@ -53,7 +55,7 @@ export class Form extends Component {
       depth_mm,
       locking,
     };
-    this.props.editGear(gear);
+    this.props.editGear(gear, token);
     this.setState({
       name: "",
       desc: "",
@@ -77,10 +79,6 @@ export class Form extends Component {
       width_mm,
       locking,
     } = this.state;
-
-    if (this.props.redirect) {
-      return <Redirect to={this.props.redirect} />;
-    }
 
     return (
       <div className="card card-body shadow mt-2 mb-2 pb-1">
@@ -193,7 +191,7 @@ export class Form extends Component {
 const mapStateToProps = (state) => {
   return {
     selectedGear: state.gearList.selectedGear,
-    redirect: state.redirect.redirect,
+    token: state.auth.token,
   };
 };
 

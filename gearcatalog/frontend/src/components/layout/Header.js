@@ -11,16 +11,20 @@ export class Header extends Component {
   };
 
   render() {
-    const { isAuthenticated, user } = this.props.auth;
+    const { isAuthenticated, user, token } = this.props.auth;
+    const { logout } = this.props;
 
     const authLinks = (
       <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
         <span className="navbar-text text-light mr-3">
-          <strong>{user ? `Welcome ${user.username[0].toUpperCase() + user.username.slice(1)}` : ""}</strong>
+          <strong>
+            {user ? `Welcome ${user.username[0].toUpperCase() +
+            user.username.slice(1)}` : ""}
+          </strong>
         </span>
         <li className="nav-item">
           <button
-            onClick={this.props.logout}
+            onClick={() => this.props.logout(token)}
             className="nav-link btn btn-info btn-sm text-light rounded"
           >
             Logout

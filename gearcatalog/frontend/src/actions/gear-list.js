@@ -5,9 +5,9 @@ import { tokenConfig } from "./auth";
 import * as c from "./types";
 
 // GET GEAR action
-export const getGear = () => (dispatch, getState) => {
+export const getGear = (token) => (dispatch) => {
   axios
-    .get("/api/gear/", tokenConfig(getState))
+    .get("/api/gear/", tokenConfig(token))
     .then((res) => {
       dispatch({
         type: c.GET_GEAR,
@@ -20,9 +20,9 @@ export const getGear = () => (dispatch, getState) => {
 };
 
 // DELETE GEAR action
-export const deleteGear = (id) => (dispatch, getState) => {
+export const deleteGear = (id, token) => (dispatch) => {
   axios
-    .delete(`/api/gear/${id}/`, tokenConfig(getState))
+    .delete(`/api/gear/${id}/`, tokenConfig(token))
     .then(() => {
       dispatch(createMessage({ gearDeleted: "Gear Deleted" }));
       dispatch({
@@ -36,9 +36,9 @@ export const deleteGear = (id) => (dispatch, getState) => {
 };
 
 // ADD GEAR action
-export const addGear = (gear) => (dispatch, getState) => {
+export const addGear = (gear, token) => (dispatch) => {
   axios
-    .post(`/api/gear/`, gear, tokenConfig(getState))
+    .post(`/api/gear/`, gear, tokenConfig(token))
     .then((res) => {
       dispatch(createMessage({ gearAdded: "Gear Added" }));
       dispatch({
@@ -52,9 +52,9 @@ export const addGear = (gear) => (dispatch, getState) => {
 };
 
 // SELECT GEAR action
-export const selectGear = (id) => (dispatch, getState) => {
+export const selectGear = (id, token) => (dispatch) => {
   axios
-    .get(`/api/gear/${id}/`, tokenConfig(getState))
+    .get(`/api/gear/${id}/`, tokenConfig(token))
     .then((res) => {
       dispatch({
         type: c.SELECT_GEAR,
@@ -67,9 +67,9 @@ export const selectGear = (id) => (dispatch, getState) => {
 };
 
 // EDIT GEAR action
-export const editGear = (gear) => (dispatch, getState) => {
+export const editGear = (gear, token) => (dispatch) => {
   axios
-    .put(`/api/gear/${gear.id}/`, gear, tokenConfig(getState))
+    .put(`/api/gear/${gear.id}/`, gear, tokenConfig(token))
     .then((res) => {
       dispatch(createMessage({ gearUpdated: "Gear Updated" }));
       dispatch({
