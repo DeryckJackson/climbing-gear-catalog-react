@@ -21,7 +21,7 @@ const Form = ({ addGear, token }: FormProps) => {
   const [width_mm, setWidth] = useState('0');
   const [depth_mm, setDepth] = useState('0');
   const { value:locking, bind:bindLocking, reset:resetLocking } = 
-  useInput('false');
+    useInput('false');
 
   // TODO:#5 Find correct event type
   const handleSubmit = (e) => {

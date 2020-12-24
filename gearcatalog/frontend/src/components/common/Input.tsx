@@ -1,10 +1,10 @@
-import React from "react";
+import React, { SetStateAction } from "react";
 
 type InputProps = {
   name: string,
   val: string | number,
   type: string,
-  setVal: (val: string) => void,
+  setVal: (val: SetStateAction<string> | SetStateAction<number>) => void,
   step?: string,
 };
 

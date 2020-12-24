@@ -20,7 +20,7 @@ describe('Input', () => {
     expect(wrapper.contains(<label>foo</label>)).toBe(true);
     expect(wrapper.containsMatchingElement(<input id={props.name} type="text">
     </input>))
-    .toBe(true);
+      .toBe(true);
   });
 
   test('Should render component and return div with number input', () => {

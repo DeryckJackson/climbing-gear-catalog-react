@@ -3,9 +3,9 @@ export type Gear = {
   name: string,
   desc: string,
   brand: string,
-  weight_grams: string,
-  length_mm: string,
-  width_mm: string,
-  depth_mm: string,
+  weight_grams: number,
+  length_mm: number,
+  width_mm: number,
+  depth_mm: number,
   locking: string,
 };

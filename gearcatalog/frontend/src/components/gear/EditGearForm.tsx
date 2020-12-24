@@ -31,7 +31,7 @@ match: { params } }: EditGearProps) => {
   const [width_mm, setWidth] = useState(selectedGear.width_mm);
   const [depth_mm, setDepth] = useState(selectedGear.depth_mm);
   const { value:locking, bind:bindLocking, reset:resetLocking } = 
-  useInput(selectedGear.locking);
+    useInput(selectedGear.locking);
 
   useEffect(() => {
     selectGear(params.id, token);
@@ -54,10 +54,10 @@ match: { params } }: EditGearProps) => {
     setName('');
     setDesc('');
     setBrand('');
-    setWeight('0');
-    setLength('0');
-    setWidth('0');
-    setDepth('0');
+    setWeight(0);
+    setLength(0);
+    setWidth(0);
+    setDepth(0);
     resetLocking();
     setGearUpdated(true);
   };
