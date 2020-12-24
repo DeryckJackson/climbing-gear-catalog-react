@@ -18,8 +18,9 @@ describe('Input', () => {
     const wrapper = shallow(<Input {...props}/>);
 
     expect(wrapper.contains(<label>foo</label>)).toBe(true);
-    expect(wrapper.containsMatchingElement(<input type="text"></input>))
-    .toBe(true);
+    expect(wrapper.containsMatchingElement(<input id={props.name} type="text">
+    </input>))
+      .toBe(true);
   });
 
   test('Should render component and return div with number input', () => {
@@ -35,7 +36,8 @@ describe('Input', () => {
 
     expect(wrapper.contains(<label>foo</label>)).toBe(true);
     expect(wrapper
-      .containsMatchingElement(<input type="number" step="1"></input>))
+      .containsMatchingElement(<input id={props.name} type="number" step="1">
+      </input>))
       .toBe(true);
   });
 

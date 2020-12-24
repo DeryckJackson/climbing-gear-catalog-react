@@ -1,10 +1,10 @@
-import React from "react";
+import React, { SetStateAction } from "react";
 
 type InputProps = {
   name: string,
   val: string | number,
   type: string,
-  setVal: (val: string) => void,
+  setVal: (val: SetStateAction<string> | SetStateAction<number>) => void,
   step?: string,
 };
 
@@ -21,6 +21,7 @@ const Input = (props: InputProps): JSX.Element => {
       <label>{`${name}`}</label>
       <input
         className="form-control"
+        id={`${name}`}
         value={`${val}`}
         type={`${type}`}
         step={`${step}`}
@@ -34,6 +35,7 @@ const Input = (props: InputProps): JSX.Element => {
         <label>{`${name}`}</label>
         <input
           className="form-control"
+          id={`${name}`}
           value={`${val}`}
           type={`${type}`}
           onChange={handleChange}

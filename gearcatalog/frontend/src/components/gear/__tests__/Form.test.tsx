@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Form from '../Form';
+import Form, { mapStateToProps } from '../Form';
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -9,7 +9,7 @@ beforeEach(() => {
 // jest.mock('../../common/Input');
 jest.mock('react-redux');
 jest.mock('react-router-dom', () => ({
-  Link: 'Link',
+  Link: 'div',
 }));
 
 describe('Form', () => {
@@ -31,7 +31,7 @@ describe('Form', () => {
     jest.spyOn(React, 'useState').mockImplementation(useStateMock);
 
     const props = {
-      addGear: jest.fn()
+      addGear: jest.fn(),
     };
 
     const wrapper = shallow(<Form {...props}/>);
@@ -45,5 +45,18 @@ describe('Form', () => {
     wrapper.find('form').simulate('submit', submitEvent);
     expect(setState).toHaveBeenCalledTimes(1);
     expect(props.addGear).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('mapStateToProps', () => {
+  test('Should return state object', () => {
+    const state = {
+      auth: {
+        token: 'foo',
+      },
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(mapStateToProps(state as any).token).toBe(state.auth.token);
   });
 });

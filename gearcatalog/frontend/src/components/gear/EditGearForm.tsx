@@ -1,32 +1,46 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import { addGear } from "../../actions/gear-list";
-import { Link } from "react-router-dom";
-import Input from '../common/Input';
+import React, { EffectCallback, useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { editGear, selectGear } from '../../actions/gear-list';
+import { Link, useHistory } from 'react-router-dom';
 import { useInput } from '../../hooks/useInput';
-import { RootReducerState } from "../../reducers/reducer.types";
+import Input from '../common/Input';
+import { Gear } from './types';
+import { RootReducerState } from '../../reducers/reducer.types';
 
-type FormProps = {
-  // TODO:#6 find correct gear type
-  addGear: (gear, token: string) => void,
+type EditGearProps = {
+  editGear: (gear: Gear, token: string) => void,
+  selectGear: (id: number, token: string) => EffectCallback,
+  selectedGear: Gear,
   token: string,
+  match: {
+    params: {
+      id: number,
+    },
+  },
 };
 
-const Form = ({ addGear, token }: FormProps) => {
-  const [name, setName] = useState('');
-  const [desc, setDesc] = useState('');
-  const [brand, setBrand] = useState('');
-  const [weight_grams, setWeight] = useState('0');
-  const [length_mm, setLength] = useState('0');
-  const [width_mm, setWidth] = useState('0');
-  const [depth_mm, setDepth] = useState('0');
+const EditGearForm = ({ editGear, selectGear, selectedGear, token,
+match: { params } }: EditGearProps) => {
+  const history = useHistory();
+  const [gearUpdated, setGearUpdated] = useState(false);
+  const [name, setName] = useState(selectedGear.name);
+  const [desc, setDesc] = useState(selectedGear.desc);
+  const [brand, setBrand] = useState(selectedGear.brand);
+  const [weight_grams, setWeight] = useState(selectedGear.weight_grams);
+  const [length_mm, setLength] = useState(selectedGear.length_mm);
+  const [width_mm, setWidth] = useState(selectedGear.width_mm);
+  const [depth_mm, setDepth] = useState(selectedGear.depth_mm);
   const { value:locking, bind:bindLocking, reset:resetLocking } = 
-    useInput('false');
+    useInput(selectedGear.locking);
 
-  // TODO:#5 Find correct event type
+  useEffect(() => {
+    selectGear(params.id, token);
+  }, [selectedGear.id]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const gear = {
+      id: selectedGear.id,
       name,
       desc,
       brand,
@@ -36,20 +50,25 @@ const Form = ({ addGear, token }: FormProps) => {
       depth_mm,
       locking,
     };
-    addGear(gear, token);
+    editGear(gear, token);
     setName('');
     setDesc('');
     setBrand('');
-    setWeight('0');
-    setLength('0');
-    setWidth('0');
-    setDepth('0');
+    setWeight(0);
+    setLength(0);
+    setWidth(0);
+    setDepth(0);
     resetLocking();
+    setGearUpdated(true);
   };
+
+  if (gearUpdated) {
+    history.push('/');
+  }
 
   return (
     <div className="card card-body mt-2 mb-2 pb-1 shadow">
-      <h2>Add Gear</h2>
+      <h2>Edit Gear</h2>
       <form onSubmit={handleSubmit}>
         <Input name={'Name'} type={'text'} val={name} setVal={setName} />
         <Input name={'Description'} type={'text'} val={desc} setVal={setDesc} />
@@ -107,13 +126,15 @@ const Form = ({ addGear, token }: FormProps) => {
 };
 
 type MapStateToProps = {
+  selectedGear: Gear,
   token: string | null,
 };
 
 export const mapStateToProps = (state: RootReducerState): MapStateToProps => {
   return {
+    selectedGear: state.gearList.selectedGear,
     token: state.auth.token,
   };
 };
 
-export default connect(mapStateToProps, { addGear })(Form);
+export default connect(mapStateToProps, { editGear, selectGear })(EditGearForm);
