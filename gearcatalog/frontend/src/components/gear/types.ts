@@ -1,4 +1,5 @@
 export type Gear = {
+  id: number,
   name: string,
   desc: string,
   brand: string,
@@ -6,5 +7,5 @@ export type Gear = {
   length_mm: number,
   width_mm: number,
   depth_mm: number,
-  locking: string,
+  locking: boolean,
 };
