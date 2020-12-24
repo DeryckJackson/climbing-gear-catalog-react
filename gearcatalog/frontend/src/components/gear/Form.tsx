@@ -4,6 +4,7 @@ import { addGear } from "../../actions/gear-list";
 import { Link } from "react-router-dom";
 import Input from '../common/Input';
 import { useInput } from '../../hooks/useInput';
+import { RootReducerState } from "../../reducers/reducer.types";
 
 type FormProps = {
   // TODO:#6 find correct gear type
@@ -105,7 +106,11 @@ const Form = ({ addGear, token }: FormProps) => {
   );
 };
 
-const mapStateToProps = (state) => {
+type MapStateToProps = {
+  token: string | null,
+};
+
+export const mapStateToProps = (state: RootReducerState): MapStateToProps => {
   return {
     token: state.auth.token,
   };

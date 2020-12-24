@@ -1,22 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { EffectCallback, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { editGear, selectGear } from '../../actions/gear-list';
 import { Link, useHistory } from 'react-router-dom';
 import { useInput } from '../../hooks/useInput';
 import Input from '../common/Input';
 import { Gear } from './types';
+import { RootReducerState } from '../../reducers/reducer.types';
 
 type EditGearProps = {
-  editGear: (gear: Gear) => void,
-  selectGear: (id: number) => void,
+  editGear: (gear: Gear, token: string) => void,
+  selectGear: (id: number, token: string) => EffectCallback,
   selectedGear: Gear,
-  params: {
-    id: number,
+  token: string,
+  match: {
+    params: {
+      id: number,
+    },
   },
 };
 
-const EditGearForm = ({ editGear, selectGear, selectedGear, params }:
-EditGearProps) => {
+const EditGearForm = ({ editGear, selectGear, selectedGear, token,
+match: { params } }: EditGearProps) => {
   const history = useHistory();
   const [gearUpdated, setGearUpdated] = useState(false);
   const [name, setName] = useState(selectedGear.name);
@@ -30,10 +34,10 @@ EditGearProps) => {
   useInput(selectedGear.locking);
 
   useEffect(() => {
-    selectGear(params.id);
-  });
+    selectGear(params.id, token);
+  }, [selectedGear.id]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const gear = {
       id: selectedGear.id,
@@ -46,7 +50,7 @@ EditGearProps) => {
       depth_mm,
       locking,
     };
-    await editGear(gear);
+    editGear(gear, token);
     setName('');
     setDesc('');
     setBrand('');
@@ -121,9 +125,15 @@ EditGearProps) => {
   );
 };
 
-const mapStateToProps = (state) => {
+type MapStateToProps = {
+  selectedGear: Gear,
+  token: string | null,
+};
+
+export const mapStateToProps = (state: RootReducerState): MapStateToProps => {
   return {
     selectedGear: state.gearList.selectedGear,
+    token: state.auth.token,
   };
 };
 

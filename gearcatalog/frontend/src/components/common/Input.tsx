@@ -21,6 +21,7 @@ const Input = (props: InputProps): JSX.Element => {
       <label>{`${name}`}</label>
       <input
         className="form-control"
+        id={`${name}`}
         value={`${val}`}
         type={`${type}`}
         step={`${step}`}
@@ -34,6 +35,7 @@ const Input = (props: InputProps): JSX.Element => {
         <label>{`${name}`}</label>
         <input
           className="form-control"
+          id={`${name}`}
           value={`${val}`}
           type={`${type}`}
           onChange={handleChange}
