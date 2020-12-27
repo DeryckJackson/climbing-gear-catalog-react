@@ -1,14 +1,14 @@
-import React, { SetStateAction } from "react";
+import React from "react";
 
-type InputProps = {
+type InputProps<T> = {
   name: string,
-  val: string | number,
+  val: T,
   type: string,
-  setVal: (val: SetStateAction<string> | SetStateAction<number>) => void,
+  setVal: (val: T) => void,
   step?: string,
 };
 
-const Input = (props: InputProps): JSX.Element => {
+const Input = <T,>(props: InputProps<T>): JSX.Element => {
   const { name, val, type, setVal, step } = props;
 
   const handleChange = (e) => {
