@@ -1,23 +1,23 @@
 import { useState } from "react";
-import { DomEvent } from '../types';
 
-type UseInputReturn = {
-  value: string,
-  setValue: (value: string) => void,
+type UseInputReturn<T> = {
+  value: T,
+  setValue: (value: T) => void,
   reset: () => void,
   bind: {
-    value: string,
-    onChange: (event: DomEvent) => void
+    value: T,
+    onChange: (event) => void
   }
 };
 
-export const useInput = (initialValue: string): UseInputReturn => {
+export const useInput = <T,>(initialValue: T ):
+  UseInputReturn<T> => {
   const [value, setValue] = useState(initialValue);
 
   return {
     value,
     setValue,
-    reset: () => setValue(`${initialValue}`),
+    reset: () => setValue(initialValue),
     bind: {
       value,
       onChange: event => {
