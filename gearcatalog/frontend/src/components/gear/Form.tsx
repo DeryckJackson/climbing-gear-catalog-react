@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 import Input from '../common/Input';
 import { useInput } from '../../hooks/useInput';
 import { RootReducerState } from "../../reducers/reducer.types";
+import { AddGear } from "../../actions/actions.types";
 
 type FormProps = {
   // TODO:#6 find correct gear type
-  addGear: (gear, token: string) => void,
+  addGear: AddGear,
   token: string,
 };
 
@@ -16,10 +17,10 @@ const Form = ({ addGear, token }: FormProps) => {
   const [name, setName] = useState('');
   const [desc, setDesc] = useState('');
   const [brand, setBrand] = useState('');
-  const [weight_grams, setWeight] = useState('0');
-  const [length_mm, setLength] = useState('0');
-  const [width_mm, setWidth] = useState('0');
-  const [depth_mm, setDepth] = useState('0');
+  const [weight_grams, setWeight] = useState(0);
+  const [length_mm, setLength] = useState(0);
+  const [width_mm, setWidth] = useState(0);
+  const [depth_mm, setDepth] = useState(0);
   const { value:locking, bind:bindLocking, reset:resetLocking } = 
     useInput('false');
 
@@ -40,10 +41,10 @@ const Form = ({ addGear, token }: FormProps) => {
     setName('');
     setDesc('');
     setBrand('');
-    setWeight('0');
-    setLength('0');
-    setWidth('0');
-    setDepth('0');
+    setWeight(0);
+    setLength(0);
+    setWidth(0);
+    setDepth(0);
     resetLocking();
   };
 

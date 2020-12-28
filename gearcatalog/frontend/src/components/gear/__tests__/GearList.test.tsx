@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import GearDetail, { mapStateToProps } from '../GearDetail';
+import GearList, { mapStateToProps } from '../GearList';
 
 jest.mock('react-redux');
 jest.mock('react-router-dom', () => ({
@@ -8,19 +8,15 @@ jest.mock('react-router-dom', () => ({
 }));
 jest.mock('../../layout/LinkButton');
 
-describe('GearDetail', () => {
+describe('GearList', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  test('Should render component and call selectGear', () => {
+  test('Should render component, call getGear and show correct gear',
+  () => {
     const props = {
-      match: {
-        params: {
-          id: 42
-        }
-      },
-      selectedGear: {
+      gearList: [{
         id: 42,
         name: 'foo',
         desc: 'baz',
@@ -29,28 +25,39 @@ describe('GearDetail', () => {
         length_mm: '2',
         width_mm: '3',
         depth_mm: '4',
-        locking: false,
-      },
-      selectGear: jest.fn(),
+        locking: 'false',
+      }],
+      getGear: jest.fn(),
     };
 
-    const wrapper = mount(<GearDetail {...props} />);
+    const wrapper = mount(<GearList {...props} />);
 
-    expect(wrapper.contains(<h2 className="my-2">Gear Detail</h2>))
+    expect(wrapper.contains(<h2 className="mt-1">Gear List</h2>))
       .toBe(true);
-    expect(wrapper.contains(<p className="card-text">Locking: No</p>))
+    expect(wrapper.contains(<strong>foo</strong>))
       .toBe(true);
-    expect(props.selectGear).toHaveBeenCalledTimes(1);
+    expect(props.getGear).toHaveBeenCalledTimes(1);
   });
 
-  test('Should simulate onClick event on delete button', () => {
+  test('Should render component, call getGear and show no gear', () => {
     const props = {
-      match: {
-        params: {
-          id: 42
-        }
-      },
-      selectedGear: {
+      gearList: [],
+      getGear: jest.fn(),
+    };
+
+    const wrapper = mount(<GearList {...props} />);
+
+    expect(wrapper.contains(<h2 className="mt-1">Gear List</h2>))
+      .toBe(true);
+    expect(wrapper.contains(<p>No gear yet.</p>))
+      .toBe(true);
+    expect(props.getGear).toHaveBeenCalledTimes(1);
+  });
+
+  test('Should render component and simulate click event',
+  () => {
+    const props = {
+      gearList: [{
         id: 42,
         name: 'foo',
         desc: 'baz',
@@ -59,21 +66,18 @@ describe('GearDetail', () => {
         length_mm: '2',
         width_mm: '3',
         depth_mm: '4',
-        locking: true,
-      },
-      selectGear: jest.fn(),
+        locking: 'false',
+      }],
+      getGear: jest.fn(),
       deleteGear: jest.fn(),
     };
-
-    const wrapper = mount(<GearDetail {...props} />);
 
     const onClickEvent = {
       preventDefault: jest.fn(),
     };
 
-    expect(props.deleteGear).toHaveBeenCalledTimes(0);
-    expect(wrapper.contains(<p className="card-text">Locking: Yes</p>))
-      .toBe(true);
+    const wrapper = mount(<GearList {...props} />);
+
     wrapper.find('button').at(0).simulate('click', onClickEvent);
     expect(props.deleteGear).toHaveBeenCalledTimes(1);
   });
@@ -83,7 +87,7 @@ describe('mapStateToProps', () => {
   test('Should return state object', () => {
     const state = {
       gearList: {
-        selectedGear: {
+        gearList: [{
           id: 42,
           name: 'foo',
           desc: 'baz',
@@ -93,7 +97,8 @@ describe('mapStateToProps', () => {
           width_mm: '3',
           depth_mm: '4',
           locking: false,
-        },
+          },
+        ],
       },
       auth: {
         token: 'foo',
@@ -103,7 +108,7 @@ describe('mapStateToProps', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expect(mapStateToProps(state as any).token).toBe(state.auth.token);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    expect(mapStateToProps(state as any).selectedGear)
-      .toBe(state.gearList.selectedGear);
+    expect(mapStateToProps(state as any).gearList)
+      .toBe(state.gearList.gearList);
   });
 });
