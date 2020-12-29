@@ -1,14 +1,15 @@
-import React, { Fragment, useEffect, EffectCallback } from "react";
+import React, { Fragment, useEffect } from "react";
 import { selectGear, deleteGear } from "../../actions/gear-list";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import LinkButton from "../layout/LinkButton";
 import { Gear } from "./types";
 import { RootReducerState } from "../../reducers/reducer.types";
+import { DeleteGear, SelectGear } from "../../actions/actions.types";
 
 type GearDetailProps = {
-  deleteGear: (id: number, token: string) => void,
-  selectGear: (id: number, token: string) => EffectCallback,
+  deleteGear: DeleteGear,
+  selectGear: SelectGear,
   selectedGear: Gear,
   token: string,
   match: {

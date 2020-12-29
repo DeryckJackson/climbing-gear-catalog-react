@@ -1,4 +1,4 @@
-import React, { EffectCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { editGear, selectGear } from '../../actions/gear-list';
 import { Link, useHistory } from 'react-router-dom';
@@ -6,10 +6,11 @@ import { useInput } from '../../hooks/useInput';
 import Input from '../common/Input';
 import { Gear } from './types';
 import { RootReducerState } from '../../reducers/reducer.types';
+import { EditGear, SelectGear } from '../../actions/actions.types';
 
 type EditGearProps = {
-  editGear: (gear: Gear, token: string) => void,
-  selectGear: (id: number, token: string) => EffectCallback,
+  editGear: EditGear,
+  selectGear: SelectGear,
   selectedGear: Gear,
   token: string,
   match: {
