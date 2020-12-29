@@ -22,22 +22,20 @@ import { loadUser } from "../actions/auth";
 import { Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 
-// Alert Options
-const alertOptions = {
-  timeout: 3000,
-  position: "top center",
-  transition: "scale",
-};
-
 class App extends Component {
-  componentDidMount() {
+  componentDidMount(): void {
     store.dispatch(loadUser(store.getState().auth.token));
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       <Provider store={store}>
-        <AlertProvider template={AlertTemplate} {...alertOptions}>
+        <AlertProvider
+          template={AlertTemplate}
+          timeout={3000}
+          transition={"scale"}
+          position={"top center"}
+        >
           <Router>
             <Fragment>
               <Header />
