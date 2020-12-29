@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, RouteProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   AuthReducerState,
@@ -22,7 +22,7 @@ const PrivateRoute = ({ component: Component, auth, ...rest }:
   />
 );
 
-type PrivateRouteProps = {
+type PrivateRouteProps = RouteProps & {
   // TODO:#4 Find correct React Component type
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component: any,

@@ -4,6 +4,9 @@
   "description": "React App for organizing and keeping track of users climbing gear.",
   "main": "index.tsx",
   "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+    },
     "setupFilesAfterEnv": [
       "./setupEnzyme.js"
     ]
@@ -25,6 +28,7 @@
     "@types/enzyme": "^3.10.8",
     "@types/jest": "^26.0.15",
     "@types/react": "^16.9.56",
+    "@types/react-alert": "^5.2.0",
     "@types/react-dom": "^16.9.9",
     "@types/react-redux": "^7.1.11",
     "@types/react-router-dom": "^5.1.6",
@@ -41,6 +45,7 @@
     "eslint-plugin-react": "^7.21.5",
     "file-loader": "^6.1.0",
     "jest": "^26.5.2",
+    "jest-css-modules": "^2.1.0",
     "redux-devtools-extension": "^2.13.8",
     "source-map-loader": "^1.1.3",
     "style-loader": "^1.3.0",
