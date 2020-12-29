@@ -60,7 +60,7 @@ const GearList = ({ deleteGear, getGear, gearList, token}: GearListProps) => {
                   View
                 </Link>
                 <button
-                  onClick={() => deleteGear(gear.id.toString(), token)}
+                  onClick={() => deleteGear(gear.id, token)}
                   className="btn-danger btn btn-sm float-right rounded"
                 >
                   Delete

@@ -35,7 +35,7 @@ match: { params } }: EditGearProps) => {
     useInput(selectedGear.locking);
 
   useEffect(() => {
-    selectGear(params.id.toString(), token);
+    selectGear(params.id, token);
   }, [selectedGear.id]);
 
   const handleSubmit = (e) => {

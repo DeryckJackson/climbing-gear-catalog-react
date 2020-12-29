@@ -29,7 +29,7 @@ const GearDetail = ({
   ) => {
 
   useEffect(() => {
-    selectGear(params.id.toString(), token);
+    selectGear(params.id, token);
   }, [selectedGear.id]);
 
   return (
@@ -73,7 +73,7 @@ const GearDetail = ({
               Edit
             </Link>
             <button
-              onClick={() => deleteGear(selectedGear.id.toString(), token)}
+              onClick={() => deleteGear(selectedGear.id, token)}
               className="btn-danger btn float-right rounded" 
             >
               Delete
