@@ -4,7 +4,9 @@ import { ThunkAction } from 'redux-thunk';
 import { Action } from 'redux';
 
 // TODO: #9 Create correct type for User
-export type User = Record<string, unknown>;
+export type User = {
+  username: string,
+};
 
 export type DeleteGear = (id: number, token: string) => void;
 export type GetGear = (token: string) => void;
