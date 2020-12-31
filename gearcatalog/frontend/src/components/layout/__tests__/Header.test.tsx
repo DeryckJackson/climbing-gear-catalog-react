@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Header, { mapStateToProps } from '../Header';
+import Header from '../Header';
 import { Link } from 'react-router-dom';
 
 jest.mock('react-redux');

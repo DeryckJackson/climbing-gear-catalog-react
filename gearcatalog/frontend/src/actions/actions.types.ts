@@ -6,6 +6,8 @@ import { Action } from 'redux';
 // TODO: #9 Create correct type for User
 export type User = {
   username: string,
+  email: string,
+  password: string
 };
 
 export type DeleteGear = (id: number, token: string) => void;
