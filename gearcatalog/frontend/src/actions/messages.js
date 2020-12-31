@@ -1,4 +1,4 @@
-import * as c from "./types";
+import * as c from "./action-constants";
 
 // CREATE MESSAGE action
 export const createMessage = (msg) => {

@@ -2,7 +2,7 @@ import axios from "axios";
 import { createMessage, returnErrors } from "./messages";
 import { tokenConfig } from "./auth";
 
-import * as c from "./types";
+import * as c from "./action-constants";
 
 // GET GEAR action
 export const getGear = (token) => (dispatch) => {

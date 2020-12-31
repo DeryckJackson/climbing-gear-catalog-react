@@ -1,4 +1,4 @@
-import * as c from "../actions/types.js";
+import * as c from "../actions/action-constants";
 
 const initialState = {
   gearList: [],
