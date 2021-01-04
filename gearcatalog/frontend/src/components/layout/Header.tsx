@@ -24,7 +24,7 @@ const Header = ({ logout, isAuthenticated, token, user }: HeaderProps) => {
       <li className="nav-item">
         <button
           onClick={() => logout(token)}
-          className="nav-link btn btn-info btn-sm text-light rounded"
+          className="nav-link btn btn-info btn-sm text-light"
         >
           Logout
         </button>

@@ -94,11 +94,11 @@ const Form = ({ addGear, token }: FormProps) => {
           </select>
         </div>
         <div className="form-group">
-          <button type="submit" className="btn btn-success mb-3 rounded">
+          <button type="submit" className="btn btn-success mb-3">
             Submit
           </button>
           <br />
-          <Link to="/" className="btn btn-primary rounded">
+          <Link to="/" className="btn btn-primary">
             Home
           </Link>
         </div>

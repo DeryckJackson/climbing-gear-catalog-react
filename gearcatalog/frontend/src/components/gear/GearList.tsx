@@ -23,12 +23,12 @@ const GearList = ({ deleteGear, getGear, gearList, token}: GearListProps) => {
     return (
       <Fragment>
         <div
-        className="card card-body justify-content-center rounded shadow mt-2"
+        className="card card-body justify-content-center shadow mt-2"
         >
           <h2 className="mt-1">Gear List</h2>
           <p>No gear yet.</p>
           <Link to="/addgear">
-            <button className="btn btn-primary mt-4 shadow rounded">
+            <button className="btn btn-primary mt-4 shadow">
               Add Gear
             </button>
           </Link>
@@ -38,12 +38,12 @@ const GearList = ({ deleteGear, getGear, gearList, token}: GearListProps) => {
   }
   return (
     <Fragment>
-      <div className="card rounded shadow mt-2">
+      <div className="card shadow mt-2">
         <div className="card-body">
           <h2 className="mt-1">Gear List</h2>
           {gearList.map((gear) => (
             <div
-              className="card border-primary d-inline-flex m-2 rounded shadow"
+              className="card border-primary d-inline-flex m-2 shadow"
               key={gear.id}
               style={{ width: "15rem" }}
             >
@@ -55,13 +55,13 @@ const GearList = ({ deleteGear, getGear, gearList, token}: GearListProps) => {
                 <hr />
                 <Link
                   to={"gear/" + gear.id}
-                  className="btn-primary btn-sm btn mr-1 rounded"
+                  className="btn-primary btn-sm btn mr-1"
                 >
                   View
                 </Link>
                 <button
                   onClick={() => deleteGear(gear.id, token)}
-                  className="btn-danger btn btn-sm float-right rounded"
+                  className="btn-danger btn btn-sm float-right"
                 >
                   Delete
                 </button>
@@ -70,7 +70,7 @@ const GearList = ({ deleteGear, getGear, gearList, token}: GearListProps) => {
           ))}
           <br />
           <div>
-            <LinkButton to="/addgear" className="btn btn-primary rounded mt-4">
+            <LinkButton to="/addgear" className="btn btn-primary mt-4">
               Add Gear
             </LinkButton>
           </div>
