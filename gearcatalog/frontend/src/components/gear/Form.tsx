@@ -15,6 +15,7 @@ type FormProps = {
 
 const Form = ({ addGear, token }: FormProps) => {
   const [name, setName] = useState('');
+  const [qty, setQty] = useState(0);
   const [desc, setDesc] = useState('');
   const [brand, setBrand] = useState('');
   const [weight_grams, setWeight] = useState(0);
@@ -29,6 +30,7 @@ const Form = ({ addGear, token }: FormProps) => {
     e.preventDefault();
     const gear = {
       name,
+      qty,
       desc,
       brand,
       weight_grams,
@@ -39,6 +41,7 @@ const Form = ({ addGear, token }: FormProps) => {
     };
     addGear(gear, token);
     setName('');
+    setQty(0);
     setDesc('');
     setBrand('');
     setWeight(0);
@@ -53,6 +56,13 @@ const Form = ({ addGear, token }: FormProps) => {
       <h2>Add Gear</h2>
       <form onSubmit={handleSubmit}>
         <Input name={'Name'} type={'text'} val={name} setVal={setName} />
+        <Input
+          name={'Quantity'}
+          type={'number'}
+          step={'1'}
+          val={qty}
+          setVal={setQty}
+          />
         <Input name={'Description'} type={'text'} val={desc} setVal={setDesc} />
         <Input name={'Brand'} type={'text'} val={brand} setVal={setBrand} />
         <Input

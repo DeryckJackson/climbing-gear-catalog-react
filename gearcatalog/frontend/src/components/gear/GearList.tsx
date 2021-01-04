@@ -51,7 +51,7 @@ const GearList = ({ deleteGear, getGear, gearList, token}: GearListProps) => {
                 <strong>{gear.name}</strong>
               </div>
               <div className="card-body">
-                <p className="card-text">Brand: {gear.brand} </p>
+                <p className="card-text">Quantity: {gear.qty}</p>
                 <hr />
                 <Link
                   to={"gear/" + gear.id}
