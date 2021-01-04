@@ -35,11 +35,11 @@ const GearDetail = ({
   return (
     <Fragment>
       <div 
-      className="card card-body justify-content-center rounded shadow mt-2"
+      className="card card-body justify-content-center shadow mt-2"
       >
         <h2 className="my-2">Gear Detail</h2>
         <div
-          className="card border-primary rounded shadow mb-3"
+          className="card border-primary shadow mb-3"
           style={{ width: "30rem" }}
           key={selectedGear.id}
         >
@@ -68,20 +68,20 @@ const GearDetail = ({
             <hr />
             <Link 
               to={"/editgear/" + selectedGear.id}
-              className="btn btn-info rounded"
+              className="btn btn-info"
             >
               Edit
             </Link>
             <button
               onClick={() => deleteGear(selectedGear.id, token)}
-              className="btn-danger btn float-right rounded" 
+              className="btn-danger btn float-right" 
             >
               Delete
             </button>
           </div>
         </div>
         <div>
-          <LinkButton to="/" className="btn btn-primary rounded">
+          <LinkButton to="/" className="btn btn-primary">
             Home
           </LinkButton>
         </div>
