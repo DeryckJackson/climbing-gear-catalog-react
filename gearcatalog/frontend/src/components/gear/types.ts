@@ -1,6 +1,7 @@
 export type Gear = {
   id: number,
   name: string,
+  qty: number,
   desc: string,
   brand: string,
   weight_grams: number,
@@ -13,6 +14,7 @@ export type Gear = {
 // Need a gear with no id when adding new gear to the database
 export type GearNoId = {
   name: string,
+  qty: number,
   desc: string,
   brand: string,
   weight_grams: number,

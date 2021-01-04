@@ -25,6 +25,7 @@ match: { params } }: EditGearProps) => {
   const history = useHistory();
   const [gearUpdated, setGearUpdated] = useState(false);
   const [name, setName] = useState(selectedGear.name);
+  const [qty, setQty] = useState(0);
   const [desc, setDesc] = useState(selectedGear.desc);
   const [brand, setBrand] = useState(selectedGear.brand);
   const [weight_grams, setWeight] = useState(selectedGear.weight_grams);
@@ -43,6 +44,7 @@ match: { params } }: EditGearProps) => {
     const gear = {
       id: selectedGear.id,
       name,
+      qty,
       desc,
       brand,
       weight_grams,
@@ -53,6 +55,7 @@ match: { params } }: EditGearProps) => {
     };
     editGear(gear, token);
     setName('');
+    setQty(0);
     setDesc('');
     setBrand('');
     setWeight(0);
@@ -72,6 +75,13 @@ match: { params } }: EditGearProps) => {
       <h2>Edit Gear</h2>
       <form onSubmit={handleSubmit}>
         <Input name={'Name'} type={'text'} val={name} setVal={setName} />
+        <Input
+          name={'Quantity'}
+          type={'number'}
+          step={'1'}
+          val={qty}
+          setVal={setQty}
+          />
         <Input name={'Description'} type={'text'} val={desc} setVal={setDesc} />
         <Input name={'Brand'} type={'text'} val={brand} setVal={setBrand} />
         <Input

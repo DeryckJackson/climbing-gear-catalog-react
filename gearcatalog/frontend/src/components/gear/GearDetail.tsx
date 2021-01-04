@@ -52,6 +52,8 @@ const GearDetail = ({
               {selectedGear.desc}
             </p>
             <hr />
+            <p className="card-text">Quantity: {selectedGear.qty}</p>
+            <hr />
             <p className="card-text">Brand: {selectedGear.brand}</p>
             <hr />
             <p className="card-text">Weight: {selectedGear.weight_grams} g</p>
