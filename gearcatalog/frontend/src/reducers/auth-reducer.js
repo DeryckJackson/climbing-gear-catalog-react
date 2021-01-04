@@ -1,4 +1,4 @@
-import * as c from '../actions/types';
+import * as c from '../actions/action-constants';
 
 const initialState = {
   // eslint-disable-next-line no-undef
